@@ -67,9 +67,8 @@ def prepare_dataset(description, raw_data):
             i += 1
     return(dataset)
 
-#My attempt for preparing dataset with comprehension
 def prepare_dataset2(description, raw_data):
-    return {get_country_name(entry[0]): [{'year': description[1][i], 'coverage': get_numeric_value(coverage)} for i, coverage in enumerate(entry[1]) if coverage is not absent_data] for entry in raw_data}
+    return {get_country_name(entry[0]): [{'year': description[1][i].strip(), 'coverage': get_numeric_value(coverage)} for i, coverage in enumerate(entry[1]) if coverage is not absent_data] for entry in raw_data}
 
 def get_country_name(country_iso):
     country_details = pycountry.countries.get(alpha_2=country_iso)
@@ -101,16 +100,16 @@ def get_average_for_year(dataset, year):
     return(sum(coverage_values) / len(coverage_values))
 
 #Prepare and print dataset (used PrettyPrinter for more user-friendly interpretation)
-dataset = prepare_dataset(description,raw_data)
+dataset = prepare_dataset2(description,raw_data)
 pp.pprint(dataset)
 
 #Retrieve data for a specific country
 country_iso = 'ME'
-print('Available data for specified country:', get_country_data(dataset, country_iso))
+print('Available data for {}: {}'.format(get_country_name(country_iso), get_country_data(dataset, country_iso)))
 
 #Retrieve data for a specific year
 year = '2018'
-print('Available data for specified year:', get_year_data(dataset, year))
+print('Available data for {}: {}'.format(year, get_year_data(dataset, year)))
 
 #Retrieve average for a specific country
 country_iso_for_average = 'RO'
