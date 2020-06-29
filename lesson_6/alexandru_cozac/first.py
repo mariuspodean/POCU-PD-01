@@ -152,7 +152,6 @@ def average_year_data(data, year):
 year_for_average = '2011'
 print("Average coverage for {} is : {:.2f}".format(year_for_average , average_year_data(data_set, year_for_average)))
 
-#Chalenge de la szili
 
 # • function to perform average from an iterable(of year data or country data)
 # This function will take an iterable as an argument.
