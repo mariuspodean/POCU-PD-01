@@ -1,3 +1,6 @@
+import pprint
+
+pp = pprint.PrettyPrinter(indent=4)
 
 description = ('Country', [
     '2011 ', '2012 ', '2013 ', '2014 ', '2015 ', '2016 ', '2017 ', '2018 ',
@@ -5,48 +8,46 @@ description = ('Country', [
 ])
 
 countries = {
-    <AL>: <Albania>,
-    <AT>: <Austria>,
-    <BA>: <Bosnia & Herzegovina>,
-    <BE>: <Belgia>,
-    <BG>: <Bulgaria>,
-    <CH>: <Switzerland>,
-    <CY>: <Cyprus>,
-    <CZ>: <Czechia>,
-    <DE>: <Germany>,
-    <DK>: <Denmark>,
-    <EA>: <Eurasian Patent organization>, #Not a country
-    <EE>: <Estonia>,
-    <EL>: <Grece>,
-    <ES>: <Spain>,
-    <FI>: <Finland>,
-    <FR>: <France>,
-    <HR>: <Croatia>,
-    <HU>: <Romania>,
-    <IE>: <Ireland>,
-    <IS>: <Iceland>,
-    <IT>: <Italy>,
-    <LT>: <Lituania>,
-    <LU>: <Luxembrug>,
-    <LV>: <Latvia>,
-    <ME>: <Montenegro>,
-    <MK>: <North Macedonia>,
-    <MT>: <Malta>,
-    <NL>: <Netherlands>,
-    <NO>: <Norway>,
-    <PL>: <Poland>,
-    <PT>: <Portugal>,
-    <RO>: <Romania>,
-    <RS>: <Serbia>,
-    <SE>: <Sweden>,
-    <SI>: <Slovenia>,
-    <SK>: <Slovakia>,
-    <TR>: <Turkey>,
-    <UK>: <United Kingdom>,
-    <XK>: <Kosovo>,
+    'AL': 'Albania',
+    'AT': 'Austria',
+    'BA': 'Bosnia & Herzegovina',
+    'BE': 'Belgium',
+    'BG': 'Bulgaria',
+    'CH': 'Switzerland',
+    'CY': 'Cyprus',
+    'CZ': 'Czechia',
+    'DE': 'Germany',
+    'DK': 'Denmark',
+    'EA': 'Eurasian Patent organization', #Not a country
+    'EE': 'Estonia',
+    'EL': 'Greece',
+    'ES': 'Spain',
+    'FI': 'Finland',
+    'FR': 'France',
+    'HR': 'Croatia',
+    'HU': 'Romania',
+    'IE': 'Ireland',
+    'IS': 'Iceland',
+    'IT': 'Italy',
+    'LT': 'Lituania',
+    'LU': 'Luxembrug',
+    'LV': 'Latvia',
+    'ME': 'Montenegro',
+    'MK': 'North Macedonia',
+    'MT': 'Malta',
+    'NL': 'Netherlands',
+    'NO': 'Norway',
+    'PL': 'Poland',
+    'PT': 'Portugal',
+    'RO': 'Romania',
+    'RS': 'Serbia',
+    'SE': 'Sweden',
+    'SI': 'Slovenia',
+    'SK': 'Slovakia',
+    'TR': 'Turkey',
+    'UK': 'United Kingdom',
+    'XK': 'Kosovo',
 }
-
-
 
 raw_data = [
     ('AL', [': ', ': ', ': ', ': ', ': ', ': ', ': ', '84 ', ': ']),
@@ -91,34 +92,72 @@ raw_data = [
 ]
 
 
-{
-    'Romania': [
-        {
-            'year': '2019',
-            'coverage': 84
-        }, {
-            'year': '2018',
-            'coverage': 67
-        },
-        ...,
-        {
-            'year': '2011',
-            'coverage': 72
-        }
-    ],
-    'Germany': [
-        {
-            'year': '2019',
-            'coverage': 94
-        }, {
-            'year': '2018',
-            'coverage': 87
-        },
-        ...,
-        {
-            'year': '2011',
-            'coverage': 82
-        }
-    ]
-}
+#country code conversion full country name
+def country_name(iso):
+    return countries.get(iso)
+
+#print(country_name('RO'))
+
+#cleanup func
+def coverage_to_int(coverage):
+    coverage = coverage.replace('b', '')
+    coverage = coverage.replace(':', '0')
+    return int(coverage)
+    
+#print(coverage_to_int('234b:'))
+
+
+def create_data(description, raw_data):
+    data_set = {}
+    years = description[1]
+    for entry in raw_data:
+        country = country_name(entry[0])
+        data_set[country] = []
+        x = 0
+        for coverage in entry[1]:
+            data_set[country].append((years[x], coverage_to_int(coverage)))
+            x += 1
+    return data_set
+
+
+
+data_set = create_data(description, raw_data)
+
+def year_coverage_data(data, year):
+    per_year_coverage = []
+    for x in data:
+        for y in data_set.get(x):
+            if year in y[0]:
+                per_year_coverage.append((x,y[1]))
+    return({year:per_year_coverage})
+        
+#pp.pprint(year_coverage_data(data_set, '2012'))
+
+
+# function to retrieve data for each country
+#This function will take the dataset and country as an argument.
+#This function will return any type that you choose
+
+def country_coverage_data(data, country):
+    per_country_coverage = data.get(country)
+    return({country:per_country_coverage})
+
+#print(country_coverage_data(data_set, 'Romania'))
+
+def average_year_data(data, year):
+    #print(year_coverage_data(data,year))
+    year_coverage = [x[1] for x in year_coverage_data(data,year)[year]]
+    year_average = sum(year_coverage) / len(year_coverage)
+    return(year_average)
+year_for_average = '2011'
+print("Average coverage for {} is : {:.2f}".format(year_for_average , average_year_data(data_set, year_for_average)))
+
+#Chalenge de la szili
+
+# • function to perform average from an iterable(of year data or country data)
+# This function will take an iterable as an argument.
+# This function will return a float.
+
+
+
 
