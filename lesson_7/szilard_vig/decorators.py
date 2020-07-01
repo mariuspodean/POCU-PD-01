@@ -17,7 +17,7 @@ def greet1(name):
 
 print(greet1('Earhling'))
 
-
+print('-'*20)
 #Create a decorator called safe_divide that will output a message if the division cannot be per-formed, othervise it will return the result.
 def safe_divide(fnc):
     fnc_name = fnc.__name__
@@ -33,9 +33,13 @@ def safe_divide(fnc):
 def divide(first_number, second_number):
     return first_number / second_number
 
-print(divide(10,2))
-print(divide(12,0))
+number1 = 10
+number2 = 3
+number3 = 0
+print(f'{number1} / {number2} = {divide(number1, number2)}')
+print(f'{number1} / {number3} = {divide(number1, number3)}')
     
+print('-'*20)
 #Create a decorator called register that will update a list calledprint_registrywith all thedecorated functions names.
 
 print_registry=[]
