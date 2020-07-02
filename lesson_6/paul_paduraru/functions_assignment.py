@@ -76,9 +76,9 @@ def get_year_data(dataset, year):
     output = {}
     output[year] = []
     for country,value in dataset.items():
-        r = [d['coverage'] for d in value if d['year']== year]
-        if len(r) > 0:
-            output[year].append((country, r[0]))
+        coverage = [d['coverage'] for d in value if d['year']== year]
+        if len(coverage) > 0:
+            output[year].append((country, coverage[0]))
 
     return output
 
