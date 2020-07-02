@@ -1,7 +1,7 @@
 def join_args(args):
     return ','.join(repr(arg) for arg in args)
 
-#Create a decorator calleduppercasethat will uppercase the result
+#Create a decorator called uppercase that will uppercase the result
 def uppercase(fnc):
     fnc_name = fnc.__name__
     print('Decorating function {}'.format(fnc_name))
@@ -47,9 +47,10 @@ print_registry=[]
 def register(fnc):
     fnc_name = fnc.__name__
     print('Decorating function {}'.format(fnc_name))
-    def inner(*args):
-        print('Decorated function {} got the following args: {}'.format(fnc_name, join_args(args)))
+    def inner(name):
+        print('Decorated function {} got the following args: {}'.format(fnc_name, name))
         print_registry.append(fnc_name)
+        return fnc(name)
     return inner
 
 @register
@@ -64,7 +65,7 @@ def say_goodbye(name):
     return "Goodbye {}!".format(name)
 
 
-say_goodbye('to Hollywood')
-greet('Master')
+print(say_goodbye('Cruel World'))
+print(greet('Master'))
     
 print('print_registry has been updated to: ', print_registry)
