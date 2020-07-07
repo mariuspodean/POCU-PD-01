@@ -9,6 +9,13 @@ class Employee():
         self.gender = gender
         self.pay = pay
 
+    def __str__(self):
+        return f'{self.first_name} {self.last_name}, {self.age}, {self.gender}, {self.pay}'
+
+    def __repr__(self):
+        class_name = type(self).__name__
+        return '{}({}{}-{}) [{}]'.format(class_name,self.first_name,self.last_name,self.age,id(self))
+
     def get_full_name(self):
         return '{} {}'.format(self.first_name, self.last_name)
 
@@ -32,8 +39,6 @@ class Developer(Employee):
         self.pay = self.pay * self.raise_amount
 
 
-
-
 employee1 = Employee('Jerome', 'Brown', 35, 'male', 1200)
 
 employee1.apply_raise()
@@ -50,3 +55,8 @@ print(f'Successfully applied a raise of {developer1.raise_amount} for {developer
 print(developer2.get_details())
 developer2.apply_raise()
 print(f'Successfully applied a raise of {developer2.raise_amount} for {developer2.get_full_name()}. Pay is now {developer2.pay:.0f}')
+
+print('-'* 25)
+
+print(employee1)
+print(repr(employee1))
