@@ -14,8 +14,11 @@ class Polygons(object):
 class PerimeterMixin:
 
     def perimeter(self):
-        perimeter = sum(self.sides)
-        return f'The perimeter is {perimeter}'
+        if isinstance(self, Square):
+            side, *_ = self.sides
+            return f'The perimeter is {side * 4}'
+        else:
+            return f'The perimeter is {sum(self.sides)}'
 
 class Triangle(PerimeterMixin, Polygons):
     # `s(s-a)(s-b)(s-c) ** 0.5` where s = `(a+b+c) / 2`
@@ -29,7 +32,7 @@ class Triangle(PerimeterMixin, Polygons):
         s_p = sum(self.sides) / 2 
         return (s_p*(s_p-s1)*(s_p-s2)*(s_p-s3))**0.5
 
-class Square(PerimeterMixin, Polygons):
+class Square(Polygons):
     def __init__(self,*args):
         super().__init__(*args)
         
