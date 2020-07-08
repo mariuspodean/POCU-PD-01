@@ -11,7 +11,13 @@ class Polygons(object):
         for side_index, length in enumerate(self.sides, start=1):
             print(f'Side {side_index} with length:{length}')
 
-class Triangle(Polygons):
+class PerimeterMixin:
+
+    def perimeter(self):
+        perimeter = sum(self.sides)
+        return f'The perimeter is {perimeter}'
+
+class Triangle(PerimeterMixin, Polygons):
     # `s(s-a)(s-b)(s-c) ** 0.5` where s = `(a+b+c) / 2`
     def __init__(self,*args):
         super().__init__(*args)
@@ -23,7 +29,7 @@ class Triangle(Polygons):
         s_p = sum(self.sides) / 2 
         return (s_p*(s_p-s1)*(s_p-s2)*(s_p-s3))**0.5
 
-class Square(Polygons):
+class Square(PerimeterMixin, Polygons):
     def __init__(self,*args):
         super().__init__(*args)
         
@@ -37,9 +43,13 @@ class Square(Polygons):
         return cls(side)
 
 
+
+
 sq1 = Square(2)
-print(sq1.area())
 sq1.display()
 
 sq2 = Square.from_area(16)
 sq2.display()
+
+tr1 = Triangle(2,3,4)
+print(tr1.perimeter())
