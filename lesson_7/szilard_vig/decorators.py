@@ -23,10 +23,11 @@ def safe_divide(fnc):
     fnc_name = fnc.__name__
     print('Decorating function {}'.format(fnc_name))
     def inner(first_number, second_number):
-        try:
-            return first_number / second_number
-        except:
-            return 'Division can not be performed'
+        return first_number / second_number
+        # try:
+        #     return first_number / second_number
+        # except:
+        #     return 'Division can not be performed'
     return inner
 
 @safe_divide
