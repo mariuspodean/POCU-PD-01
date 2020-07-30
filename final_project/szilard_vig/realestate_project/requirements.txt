@@ -1,0 +1,49 @@
+Real Estate App Requirements
+
+Frontend Pages:
+- Home
+- About
+- Listings 
+- Single Listing
+- Search
+- Register
+- Login
+- Dashboard (Inquiries)
+
+Design specs:
+- Use RE logo (Frontend and admin)
+- Branding colors - blue(#10284e) and green(#30caa0)
+- Mobile Friendly
+- Social media icons & contact info
+- Clean design
+
+Functionality specs:
+- Manage listings, realtors, inquiries and website users via admin
+- Role based users (staff and non-staff)
+- Display listings in app with pagination
+- Ability to set listings to unpublished
+- Search listings by keyword, city, state, bedrooms, and price (Homepage & Searchpage)
+- List realtors on about page with "seller of the month" - (control via admin)
+- Listing should the fields listed below
+- Listing should have 6 images with lightbox
+- Lightbox should scroll through images
+- Listing page should have a form to submit inquiry for that property listing
+- Form info should go to database and notify realtor with an email
+- Frontend register / login to track inquiries
+- Both registered and unregistered users can submit inquiry. If registered and logged-in, can only submit one per listing
+
+Listing Page fields
+- Title
+- Address
+- Price
+- Bedrooms
+- Bathrooms
+- Square feet
+- Garage
+- Listing date
+- Realtor - Name & Image
+- Main image and 6 optional images 
+
+Possible future functionality
+- Google maps on listing page
+- Buyer testimonials
