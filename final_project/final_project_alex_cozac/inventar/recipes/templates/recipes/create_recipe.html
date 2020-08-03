@@ -1,0 +1,85 @@
+<h1>Create Item</h1>
+{% extends 'recipes/base.html'%}
+
+{% block content %}
+<html>
+<head>
+<title>Create Recipe </title>
+</head>
+
+<body>
+    <section id="recipe" class="bg-light py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 mx-auto">
+              <div class="card">
+                <div class="card-header bg-primary text-white">
+                  <h4>
+                    <i class="fas fa-sign-in-alt"></i> Create recipe</h4>
+                </div>
+                <div class="card-body">
+                    <form action="{% url 'create_recipe' %}" method="POST">
+                        {% csrf_token %}
+                    <div class="form-group">
+                      <label for="name">Name</label>
+                      <input type="text" name="title" class="form-control" required>
+                    </div>
+    
+                    <div class="form-group">
+                      <label for="item_1">article 1</label>
+                      <input type="text" name="item_1" class="form-control" required>
+                    </div>
+ 
+                    <div class="form-group">
+                        <label for="item_2">article 2</label>
+                        <input type="text" name="item_2" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="item_3">article 3</label>
+                        <input type="text" name="item_3" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="item_4">article 4</label>
+                        <input type="text" name="item_4" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="item_5">article 5</label>
+                        <input type="text" name="item_5" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="item_6">article 6</label>
+                        <input type="text" name="item_6" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="item_7">article 7</label>
+                        <input type="text" name="item_7" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="item_8">article 8</label>
+                        <input type="text" name="item_8" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="img">Picture</label>
+                        <input type="file" name="img" class="form-control" required>
+                    </div>
+                    
+                    <input type="submit" value="Post" class="btn btn-secondary btn-block">
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </body>
+
+</html>
+{% endblock %}
+
+<label class="required" for="id_distributor">Distributor:</label>

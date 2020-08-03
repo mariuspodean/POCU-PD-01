@@ -1,13 +1,38 @@
-<h1>All distributors</h1>
+<h1>All distributors1</h1>
 
 {% extends 'recipes/base.html'%}
 
 {% block content %}
 
-{% for distributor in distributors %}
-
-{{ distributor.title }}
-
-{% endfor %}
+<section id="items" class="py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Available distributors</h2>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for distributor in distributors %}
+              <tr>
+                <td>{{ distributor.title }}</td>
+                <td>{{ distributor.description }}</td>
+                <td>{{ distributor.email }}</td>
+                <td>{{ distributor.phone }}</td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
 
 {% endblock %}

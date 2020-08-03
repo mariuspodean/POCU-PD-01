@@ -39,7 +39,7 @@
                   Recipes
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Create recipe</a>
+                  <a class="dropdown-item" href="{% url 'create_recipe' %}">Create recipe</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="{% url 'all_recipes' %}">View recipe</a>
                 </div>
@@ -50,7 +50,7 @@
                   Distributors
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Add distributor</a>
+                  <a class="dropdown-item" href="{% url 'create_distributor' %}">Create distributor</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="{% url 'all_distributors' %}">View distributors</a>
                 </div>

@@ -1,3 +1,4 @@
+<h1>Create Item</h1>
 {% extends 'recipes/base.html'%}
 
 {% block content %}
@@ -7,21 +8,50 @@
 </head>
 
 <body>
-    <h1>Create a Post </h1>
-    <form action="{% url 'create_item' %}" method="POST">
-    {% csrf_token %}
-    Title: <input type="text" name="title"/><br/>
-    Description: <br/>
-    <textarea cols="35" rows="8" name="description">
-    </textarea><br/>
-    Quantity: <br/>
-    <textarea cols="35" rows="8" name="quantity">
-    </textarea><br/>
-    Distributor: <br/>
-    <textarea cols="35" rows="8" name="distributor">
-    </textarea><br/>
-    <input type="submit" value="Post"/>
-    </form>
+    <section id="create_item" class="bg-light py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 mx-auto">
+              <div class="card">
+                <div class="card-header bg-primary text-white">
+                  <h4>
+                    <i class="fas fa-sign-in-alt"></i> Create item</h4>
+                </div>
+                <div class="card-body">
+                    <form action="{% url 'create_item' %}" method="POST">
+                        {% csrf_token %}
+                    <div class="form-group">
+                      <label for="title">Title</label>
+                      <input type="text" name="title" class="form-control" required>
+                    </div>
+    
+                    <div class="form-group">
+                      <label for="description">Description</label>
+                      <input type="text" name="description" class="form-control" required>
+                    </div>
+ 
+                    <div class="form-group">
+                        <label for="quantity">Quantity</label>
+                        <input type="text" name="quantity" class="form-control" required>
+                    </div>
+ 
+                    <div class="form-group">
+                        <label for="distributor">Distributor</label>
+                        <select name="distributor" id="distributor" class="form-control" required>
+                            {% for distributor in distributors %}
+                          <option value="{{ distributor.title }}">{{ distributor.title }}</option>
+                        {% endfor %}
+                        </select> 
+                    </div>
+                    
+                    <input type="submit" value="Post" class="btn btn-secondary btn-block">
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </body>
 
 </html>

@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Item
 from distributors.models import Distributor
+
 
 
 def all_items(request):
@@ -8,45 +9,18 @@ def all_items(request):
     return render(request, 'items/all_items.html', {'items':items})
 
 def create_item(request):
-    # distributors = Distributor.objects.all()
-
+    distributors = Distributor.objects.all
+    
     if request.method == 'POST':
         title = request.POST['title']
         description = request.POST['description']
         quantity = request.POST['quantity']
-        distributor = Distributor.objects.get(request.POST['distributor'])
-        
+        dist_name = request.POST['distributor']
+        distributor = Distributor.objects.filter(title=dist_name).first()
         
         item = Item(title=title, description=description, quantity=quantity, distributor=distributor)
         
         item.save()
-    
-    items = Item.objects.all()
-    return render(request, 'items/create_item.html', {'items':items})
-
-
-# def createItem(request):
-#     if request.method == 'POST':
-#         if request.POST.get('title') and request.POST.get('descritpion') and request.POST.get('quantity') and request.POST.get('distributor'):
-#             post=Item()
-#             post.title = request.POST.get('title')
-#             post.description = request.POST.get('description')
-#             post.quantity = request.POST.get('quantity')
-#             post.distributor = request.POST.get('distributor')
-#             post.save()
-
-
-#             return render(request, 'create_item.html')
-#     else:
-#             return render(request, 'create_item.html')
-# def createItem(request):
-#     if request.method == 'POST':
-#         title = request.POST['title']
-#         description = request.POST['description']
-#         quantity = request.POST['quantity']
-#         distributor = request.POST['distributor']
-        
-#         item = Item(title = title, description=description, quantity=quantity, distributor=distributor)
- 
-#         item.save()
-#         return 
+        return redirect('all_items')
+    else:
+        return render(request, 'items/create_item.html', {'distributors':distributors})
