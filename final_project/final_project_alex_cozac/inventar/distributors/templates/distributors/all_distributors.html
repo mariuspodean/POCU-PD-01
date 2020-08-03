@@ -1,0 +1,13 @@
+<h1>All distributors</h1>
+
+{% extends 'recipes/base.html'%}
+
+{% block content %}
+
+{% for distributor in distributors %}
+
+{{ distributor.title }}
+
+{% endfor %}
+
+{% endblock %}

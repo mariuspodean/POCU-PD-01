@@ -1,0 +1,21 @@
+
+
+<h1>Homepage recipes</h1>
+
+{% extends 'recipes/base.html'%}
+
+{% block content %}
+
+{% for recipe in recipes %}
+
+{{ recipe.name }}
+
+<img src="{{recipe.image.url }}" alt="">
+
+
+
+{% endfor %}
+
+
+{% endblock %}
+

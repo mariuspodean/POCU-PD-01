@@ -1,0 +1,30 @@
+{% extends 'recipes/base.html'%}
+
+{% block content %}
+<html>
+<head>
+<title>Create Item </title>
+</head>
+
+<body>
+    <h1>Create a Post </h1>
+    <form action="{% url 'create_item' %}" method="POST">
+    {% csrf_token %}
+    Title: <input type="text" name="title"/><br/>
+    Description: <br/>
+    <textarea cols="35" rows="8" name="description">
+    </textarea><br/>
+    Quantity: <br/>
+    <textarea cols="35" rows="8" name="quantity">
+    </textarea><br/>
+    Distributor: <br/>
+    <textarea cols="35" rows="8" name="distributor">
+    </textarea><br/>
+    <input type="submit" value="Post"/>
+    </form>
+    </body>
+
+</html>
+{% endblock %}
+
+<label class="required" for="id_distributor">Distributor:</label>
