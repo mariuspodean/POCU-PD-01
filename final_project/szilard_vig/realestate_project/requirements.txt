@@ -11,7 +11,7 @@ Frontend Pages:
 - Dashboard (Inquiries)
 
 Design specs:
-- Use RE logo (Frontend and admin)
+- Use logo (Frontend and admin)
 - Branding colors - blue(#10284e) and green(#30caa0)
 - Mobile Friendly
 - Social media icons & contact info
@@ -24,13 +24,13 @@ Functionality specs:
 - Ability to set listings to unpublished
 - Search listings by keyword, city, state, bedrooms, and price (Homepage & Searchpage)
 - List realtors on about page with "seller of the month" - (control via admin)
-- Listing should the fields listed below
+- Listing should have the fields listed below
 - Listing should have 6 images with lightbox
 - Lightbox should scroll through images
 - Listing page should have a form to submit inquiry for that property listing
 - Form info should go to database and notify realtor with an email
 - Frontend register / login to track inquiries
-- Both registered and unregistered users can submit inquiry. If registered and logged-in, can only submit one per listing
+- Both registered and unregistered users can submit inquiry
 
 Listing Page fields
 - Title
