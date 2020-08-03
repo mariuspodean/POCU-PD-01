@@ -1,5 +1,79 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
+{% block title %}
+> Pets 
+{% endblock %}
+
+{% load humanize %}
+
 {% block content %}
-    <h2> Pet Listing Page </h2>
+    <main id="main">
+
+        <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2>Pets</h2>
+                    <ol>
+                        <li>
+                            <a href="{% url 'index' %}">Home</a>
+                        </li>
+                        <li>Pets</li>
+                    </ol>
+                </div>
+            </div>
+            
+        </section>
+        <!-- End Breadcrumbs -->
+
+
+        <!-- ======= Pet List Section ======= -->
+        <section id="event-list" class="event-list">
+            <div class="container">
+                <div class="row">
+                {% if object_list %}
+                    {% for pet in object_list %}
+
+                    <!-- ======= Pet Section ======= -->
+                    <div class="col-md-6 d-flex align-items-stretch">
+                        <div class="card">
+                            <div class="card-img">
+                                <img src="{{ pet.main_photo.url }}" alt="..." width="540px" height="360px">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ pet.name }}</h5>
+                                <p class="font-italic text-center">Owner: {{ pet.owner }}</p>
+                                <p class="font-italic text-center">Size: {{ pet.size }}</p>
+                                <p class="font-italic text-center">Age: {{ pet.age | apnumber}} year(s)</p>
+                                <p class="card-text">{{ pet.description }}</p>
+                                <div class="about" style="text-align:center; bottom: 10px; margin-top: auto">
+                                    <div class="content">
+                                        <a href="{% url 'pet_details' pet.id %}" class="btn-learn-more">More Details</a>
+                                    </div>                                   
+                                </div>                             
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Pet Section -->
+
+                    {% endfor %}
+                {% else %}
+
+                    <!-- ======= Empty List Section ======= -->
+                    <div class="col-md-12">
+                        <p>No Dogs Available</p>
+                    </div>
+                    <!-- End Empty List Section -->
+
+                {% endif %}
+                </div>
+            </div>
+        </section>
+        <!-- End Pet List Section -->
+
+    </main>
+    <!-- End #main -->
+
 {% endblock %}

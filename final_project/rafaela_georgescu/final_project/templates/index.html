@@ -2,6 +2,10 @@
 
 {% load static %}
 
+{% block title %}
+> Home 
+{% endblock %}
+
 {% block content %}
     <!-- ======= Hero Section ======= -->
     <section id="hero">
@@ -75,30 +79,13 @@
                     <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
                 </div>
                 <div class="owl-carousel recent-photos-carousel">
-                    <a href="{% static 'img/recent-photos/recent-photos-1.jpg' %}" class="venobox" data-gall="recent-photos-carousel">
-                        <img src="{% static 'img/recent-photos/recent-photos-1.jpg' %}" alt="">
+                {% if walkers %}
+                    {% for walker in walkers %}
+                    <a href="{{ walker.photo.url }}" class="venobox" data-gall="recent-photos-carousel">
+                        <img src="{{ walker.photo.url }}" alt="">
                     </a>
-                    <a href="{% static 'img/recent-photos/recent-photos-2.jpg' %}" class="venobox" data-gall="recent-photos-carousel">
-                        <img src="{% static 'img/recent-photos/recent-photos-2.jpg' %}" alt="">
-                    </a>
-                    <a href="{% static 'img/recent-photos/recent-photos-3.jpg' %}" class="venobox" data-gall="recent-photos-carousel">
-                        <img src="{% static 'img/recent-photos/recent-photos-3.jpg' %}" alt="">
-                    </a>
-                    <a href="{% static 'img/recent-photos/recent-photos-4.jpg' %}" class="venobox" data-gall="recent-photos-carousel">
-                        <img src="{% static 'img/recent-photos/recent-photos-4.jpg' %}" alt="">
-                    </a>
-                    <a href="{% static 'img/recent-photos/recent-photos-5.jpg' %}" class="venobox" data-gall="recent-photos-carousel">
-                        <img src="{% static 'img/recent-photos/recent-photos-5.jpg' %}" alt="">
-                    </a>
-                    <a href="{% static 'img/recent-photos/recent-photos-6.jpg' %}" class="venobox" data-gall="recent-photos-carousel">
-                        <img src="{% static 'img/recent-photos/recent-photos-6.jpg' %}" alt="">
-                    </a>
-                    <a href="{% static 'img/recent-photos/recent-photos-7.jpg' %}" class="venobox" data-gall="recent-photos-carousel">
-                        <img src="{% static 'img/recent-photos/recent-photos-7.jpg' %}" alt="">
-                    </a>
-                    <a href="{% static 'img/recent-photos/recent-photos-8.jpg' %}" class="venobox" data-gall="recent-photos-carousel">
-                        <img src="{% static 'img/recent-photos/recent-photos-8.jpg' %}" alt="">
-                    </a>
+                    {% endfor %}
+                {% endif %}
                 </div>
             </div>
         </section>
@@ -108,34 +95,17 @@
         <section id="recent-photos" class="recent-photos">
             <div class="container">
                 <div class="section-title">
-                    <h2>Meet our animals</h2>
+                    <h2>Pets in the community</h2>
                     <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
                 </div>
                 <div class="owl-carousel recent-photos-carousel">
-                    <a href="{% static 'img/recent-photos/recent-photos-1.jpg' %}" class="venobox" data-gall="recent-photos-carousel">
-                        <img src="{% static 'img/recent-photos/recent-photos-1.jpg' %}" alt="">
+                {% if pets %}
+                    {% for pet in pets %}
+                    <a href="{{ pet.main_photo.url }}" class="venobox" data-gall="recent-photos-carousel">
+                        <img src="{{ pet.main_photo.url }}" alt="">
                     </a>
-                    <a href="{% static 'img/recent-photos/recent-photos-2.jpg' %}" class="venobox" data-gall="recent-photos-carousel">
-                        <img src="{% static 'img/recent-photos/recent-photos-2.jpg' %}" alt="">
-                    </a>
-                    <a href="{% static 'img/recent-photos/recent-photos-3.jpg' %}" class="venobox" data-gall="recent-photos-carousel">
-                        <img src="{% static 'img/recent-photos/recent-photos-3.jpg' %}" alt="">
-                    </a>
-                    <a href="{% static 'img/recent-photos/recent-photos-4.jpg' %}" class="venobox" data-gall="recent-photos-carousel">
-                        <img src="{% static 'img/recent-photos/recent-photos-4.jpg' %}" alt="">
-                    </a>
-                    <a href="{% static 'img/recent-photos/recent-photos-5.jpg' %}" class="venobox" data-gall="recent-photos-carousel">
-                        <img src="{% static 'img/recent-photos/recent-photos-5.jpg' %}" alt="">
-                    </a>
-                    <a href="{% static 'img/recent-photos/recent-photos-6.jpg' %}" class="venobox" data-gall="recent-photos-carousel">
-                        <img src="{% static 'img/recent-photos/recent-photos-6.jpg' %}" alt="">
-                    </a>
-                    <a href="{% static 'img/recent-photos/recent-photos-7.jpg' %}" class="venobox" data-gall="recent-photos-carousel">
-                        <img src="{% static 'img/recent-photos/recent-photos-7.jpg' %}" alt="">
-                    </a>
-                    <a href="{% static 'img/recent-photos/recent-photos-8.jpg' %}" class="venobox" data-gall="recent-photos-carousel">
-                        <img src="{% static 'img/recent-photos/recent-photos-8.jpg' %}" alt="">
-                    </a>
+                    {% endfor %}
+                {% endif %}
                 </div>
             </div>
         </section>

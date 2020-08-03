@@ -1,0 +1,34 @@
+{% block loginModal %}
+<!-- ======= Login Modal ======= -->
+<div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content about">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" class="form-group">
+                {% csrf_token %}
+                <div class="modal-body mx-3">
+                    <div class="md-form mb-5" style="padding-top: 20px">
+                        <i class="icofont-envelope " style="color: #006fbe; float: left; font-size: 30px; padding-right: 5px"></i>
+                        <input type="email" id="loginForm-email" class="form-control validate" required placeholder="Your email" style="width: 90%; border-color: #006fbe">
+                        <label data-error="wrong" data-success="right" for="defaultForm-email"></label>
+                    </div>
+                    <div class="md-form mb-4">
+                        <i class="icofont-lock prefix grey-text" style="color: #006fbe; font-size: 30px; float: left; padding-right: 5px"></i>                       
+                        <input type="password" id="loginForm-pass" class="form-control validate" required placeholder="Your email" style="width: 90%; border-color: #006fbe">
+                        <label data-error="wrong" data-success="right" for="defaultForm-pass"></label>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-center content">
+                    <button class="btn btn-learn-more" type="submit">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- End Login Modal -->
+{% endblock %}

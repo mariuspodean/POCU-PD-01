@@ -1,3 +1,5 @@
+{% include 'registration/login.html' %}
+{% include 'registration/register.html' %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +19,7 @@
     <link href="{% static 'vendor/venobox/venobox.css' %}" rel="stylesheet">
     <!-- Template Main CSS File -->
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
-    <title>Paw Patrol</title>
+    <title>Paw Patrol {% block title %} {% endblock %}</title>
 </head>
 <body>
     <!-- ======= Header ======= -->
@@ -62,13 +64,13 @@
             <nav class="nav-menu d-none d-lg-block col-md-2" id="registration-container">
                 <ul>
                     <li class="nav-item mr-3">
-                        <a href="{% url 'index' %}">
+                        <a href="#" data-toggle="modal" data-target="#modalRegisterForm">
                             <i class="icofont-user-alt-3"></i>
                             Register
                         </a>
                     </li>
                     <li class="nav-item mr-3">
-                        <a href="{% url 'about' %}">
+                        <a href="#" data-toggle="modal" data-target="#modalLoginForm">
                             <i class="icofont-sign-in"></i>
                             Login
                         </a>
@@ -78,7 +80,10 @@
         </div>
     </header>
     <!-- End Header -->
+    {% block loginModal %} {% endblock%}
     
+    {% block registerModal %} {% endblock%}
+
     <!-- Main Content -->
     {% block content %} {% endblock %}
 

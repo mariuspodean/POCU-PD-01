@@ -1,9 +1,9 @@
 from django.urls import path
 
-from pages import views
+from pages.views import PetListingPageView, PetDetailsPageView
 
 
 urlpatterns = [
-    path('', views.PetListingPageView.as_view(), name='pets'),
-    path('<int:pet_id>/', views.pet_details, name='pet_details')
+    path('', PetListingPageView.as_view(), name='pets'),
+    path('<int:pet_id>/', PetDetailsPageView.as_view(), name='pet_details'),
 ]

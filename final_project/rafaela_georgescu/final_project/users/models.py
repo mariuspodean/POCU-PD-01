@@ -1,9 +1,13 @@
 from django.db import models
 from datetime import datetime
+import os
 
 def user_directory_path(instance, filename): 
-    return f'photos/users/user_{instance.name}/'
-
+    return os.path.join(
+        'photos/users/',
+        instance.name,
+        filename
+    )
 
 class Gender(models.TextChoices):
     FEMALE = 'F', 'Female'

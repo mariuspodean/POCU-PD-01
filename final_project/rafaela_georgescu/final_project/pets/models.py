@@ -1,10 +1,15 @@
 from django.db import models
 from datetime import datetime
 from users.models import Owner
+import os
 
 
 def pet_directory_path(instance, filename): 
-    return f'photos/pets/{instance.name}/'
+    return os.path.join(
+        'photos/pets/',
+        instance.name,
+        filename
+    )
 
 class Gender(models.TextChoices):
     FEMALE = 'F', 'Female'
