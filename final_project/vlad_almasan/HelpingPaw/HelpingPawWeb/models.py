@@ -7,6 +7,9 @@ class Personality(models.Model):
     def __str__(self):
         return self.personality_type
 
+    class Meta:
+        verbose_name_plural = "Personalities"
+
 class Species(models.Model):
     name = models.CharField('Name', max_length=100)
     is_exotic = models.BooleanField('Exotic', default=False)
@@ -14,11 +17,17 @@ class Species(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name_plural = "Species"
+
 class City(models.Model):
     name = models.CharField('Name', max_length=50)
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name_plural = "Cities"
 
 class Shelter(models.Model):
     name = models.CharField('Name', max_length=200)
