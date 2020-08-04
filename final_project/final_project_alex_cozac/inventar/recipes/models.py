@@ -5,6 +5,7 @@ from items.models import Item
 
 class Recipe(models.Model):
     name = models.CharField(max_length=200)
+    # items = models.ManyToManyField(Item)
     item_1 = models.ForeignKey(Item, on_delete = models.DO_NOTHING, related_name='item1')
     item_2 = models.ForeignKey(Item, on_delete = models.DO_NOTHING, related_name='item2')
     item_3 = models.ForeignKey(Item, on_delete = models.DO_NOTHING, blank=True, related_name='item3', null=True)

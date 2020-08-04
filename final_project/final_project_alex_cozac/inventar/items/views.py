@@ -24,3 +24,4 @@ def create_item(request):
         return redirect('all_items')
     else:
         return render(request, 'items/create_item.html', {'distributors':distributors})
+

@@ -15,9 +15,6 @@ def create_recipe(request):
 
     if request.method == 'POST':
         name = request.POST['name']
-
-    
-
         item_title = request.POST['item_1']
         item_1 = Item.objects.filter(title=item_title).first()
         item_title = request.POST['item_2']
@@ -64,3 +61,4 @@ def create_recipe(request):
 def update_item(item):
     quantity = item.quantity-1
     Item.objects.filter(pk=item.id).update(quantity=quantity)
+
