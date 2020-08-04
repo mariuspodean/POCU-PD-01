@@ -28,7 +28,7 @@ Functionality specs:
 - Listing should have 6 images with lightbox
 - Lightbox should scroll through images
 - Listing page should have a form to submit inquiry for that property listing
-- Form info should go to database and notify realtor with an email
+- Form info should go to database 
 - Frontend register / login to track inquiries
 - Both registered and unregistered users can submit inquiry
 
@@ -47,3 +47,4 @@ Listing Page fields
 Possible future functionality
 - Google maps on listing page
 - Buyer testimonials
+- Notify realtor with an email when an inquiry is submitted regarding his listing 
