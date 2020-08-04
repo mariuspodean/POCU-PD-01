@@ -158,4 +158,21 @@
     });
   });
 
+  $(document).ready(function(){
+    $("#walker").click(function(){      
+        $(".walker").show();
+        $(".user-buttons").hide();                             
+    });
+    $("#owner").click(function(){      
+        $(".owner").show(); 
+        $(".user-buttons").hide();                                             
+    });
+    $(".close").click(function() {
+      $(".owner").hide(); 
+      $(".walker").hide();
+      $(".user-buttons").show();                                             
+    });
+  });
+
 })(jQuery);
+

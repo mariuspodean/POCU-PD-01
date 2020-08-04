@@ -3,6 +3,8 @@ from datetime import datetime
 import os
 
 def user_directory_path(instance, filename): 
+    print(f'DEBUG: instance name {instance.name}')
+    print(f'DEBUG: filename {filename}')
     return os.path.join(
         'photos/users/',
         instance.name,

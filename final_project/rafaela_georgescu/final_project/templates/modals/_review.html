@@ -1,0 +1,35 @@
+{% block reviewModal %}
+
+<!-- ======= Review Modal ======= -->
+<div class="modal fade" id="modalReviewForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content about">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Give Review</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="POST" class="form-group">
+                {% csrf_token %}
+                <div class="modal-body mx-3">
+                    <div class="md-form mb-5" style="padding-top: 20px">
+                        <i class="icofont-book" style="color: #006fbe; float: left; font-size: 30px; padding-right: 5px"></i>
+                        <textarea type="text" name="review_text" id="reviewForm-review_text" class="form-control validate" required placeholder="Write your review..." style="width: 90%; border-color: #006fbe"></textarea>
+                        <label data-error="wrong" data-success="right" for="reviewForm-review_text"></label>
+                    </div>
+                    <div class="md-form mb-4">
+                        <input type="radio" name="rating" id="reviewForm-star_1">
+                        <label for="reviewForm-star_1"></label>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-center content">
+                    <button class="btn btn-learn-more" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- End Review Modal -->
+
+{% endblock %}

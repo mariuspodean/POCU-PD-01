@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block title %}
-> Pets 
+> Walkers 
 {% endblock %}
 
 {% load humanize %}
@@ -20,7 +20,7 @@
                         <li>
                             <a href="{% url 'index' %}">Home</a>
                         </li>
-                        <li>Pets</li>
+                        <li>Walkers</li>
                     </ol>
                 </div>
             </div>
@@ -29,41 +29,41 @@
         <!-- End Breadcrumbs -->
 
 
-        <!-- ======= Pet List Section ======= -->
+        <!-- ======= Walker List Section ======= -->
         <section id="event-list" class="event-list">
             <div class="container">
                 <div class="row">
                 {% if object_list %}
-                    {% for pet in object_list %}
+                    {% for walker in object_list %}
 
-                    <!-- ======= Pet Section ======= -->
+                    <!-- ======= Walker Section ======= -->
                     <div class="col-md-6 d-flex align-items-stretch">
                         <div class="card">
-                            <div class="card-img">
-                                <img src="{{ pet.main_photo.url }}" alt="..." width="540px" height="360px">
+                            <div class="card-img" style="text-align: center">
+                                <img src="{{ walker.photo.url }}" alt="..." width="540px" height="360px">
                             </div>
                             <div class="card-body">
-                                <h5 class="card-title">{{ pet.name }}</h5>
-                                <p class="font-italic text-center">Owner: {{ pet.owner }}</p>
-                                <p class="font-italic text-center">Size: {{ pet.size }}</p>
-                                <p class="font-italic text-center">Age: {{ pet.age | apnumber}} year(s)</p>
-                                <p class="card-text">{{ pet.description }}</p>
+                                <h5 class="card-title">{{ walker.name }}</h5>
+                                <p class="font-italic text-center">Age: {{ walker.age | apnumber}} year(s)</p>
+                                <p class="font-italic text-center">Member since: {{ walker.date_added | naturaltime}}</p>
+                                <p class="font-italic text-center">Rating: {{ walker.rating }} stars</p>
+                                <p class="card-text">{{ walker.description }}</p>
                                 <div class="about" style="text-align:center; bottom: 10px; margin-top: auto">
                                     <div class="content">
-                                        <a href="{% url 'pet_details' pet.id %}" class="btn-learn-more">More Details</a>
+                                        <a href="{% url 'walker_details' walker.id %}" class="btn-learn-more">More Details</a>
                                     </div>                                   
                                 </div>                             
                             </div>
                         </div>
                     </div>
-                    <!-- End Pet Section -->
+                    <!-- End Walker Section -->
 
                     {% endfor %}
                 {% else %}
 
                     <!-- ======= Empty List Section ======= -->
                     <div class="col-md-12">
-                        <p>No Dogs Available</p>
+                        <p>No Walkers available</p>
                     </div>
                     <!-- End Empty List Section -->
 
@@ -71,10 +71,10 @@
                 </div>
             </div>
         </section>
-        <!-- End Pet List Section -->
+        <!-- End Walker List Section -->
 
         <!-- Pagination Section -->
-        <section id="pagination" class ="container text-xs-center">
+        <section id="pagination" class="container text-xs-center">
             <nav aria-label="Page navigation example">
                 <ul class="pagination pagination-md justify-content-center">
                     {% if page_obj.has_previous %}
@@ -85,7 +85,7 @@
                     {% for page in page_obj.paginator.page_range %}
                     <li 
                         {% if page_obj.number == page %}
-                            class="page-item active"
+                            class="page-item active"  
                         {% else %}
                             class="page-item"
                         {% endif %}
@@ -102,6 +102,7 @@
             </nav>
         </section>
         <!-- End Pagination Section -->
+
 
     </main>
     <!-- End #main -->

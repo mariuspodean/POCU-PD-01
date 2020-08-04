@@ -1,6 +1,6 @@
 from django.urls import path
 
-from pages.views import PetListingPageView, PetDetailsPageView
+from .views import PetListingPageView, PetDetailsPageView
 
 
 urlpatterns = [

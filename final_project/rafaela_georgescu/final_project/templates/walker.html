@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+
+{% include 'modals/_review.html' %}
+
+{% block title %}
+> {{ walker.name }} 
+{% endblock %}
+
+{% block content %}
+    <main id="main">
+
+        <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2>{{walker.name}}'s Details</h2>
+                    <ol>
+                        <li>
+                            <a href="{% url 'index' %}">Home</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'walkers' %}">Walkers</a>
+                        </li>
+                        <li>{{walker.name}}</li>
+                    </ol>
+                </div>
+            </div>
+            
+        </section>
+        <!-- End Breadcrumbs -->
+
+        <br>
+        <section id="hero" style="width: 50%; height: 600px; margin: 0 auto;">
+            <div id="heroCarousel" class="carousel slide carousel-fade" data-ride="carousel" style="width: 100%; height: 600px;" >
+                <div class="carousel-inner" role="listbox">
+        
+                    <!-- Slide 1 -->
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" src="{{ walker.photo.url }}" alt="First slide" height="100%" >
+                    </div>
+        
+                </div>
+            </div>
+            
+        </section>
+        <!-- End Hero -->
+
+        <section id="story-intro" class="story-intro ">
+            <div class="container text-xs-center">
+                <div class="content text-xs-center">
+                    <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
+                    <p class="font-italic">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                    magna aliqua.
+                    </p>
+                    <ul>
+                        <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                        <li><i class="icofont-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                        <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                    </ul>
+                    <p>
+                    Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum
+                    </p>
+                </div>
+                <div class="about" style="text-align:center; bottom: 10px; margin-top: auto">
+                    <div class="content">
+                        <button class="btn-learn-more" data-toggle="modal" data-target="#modalReviewForm">
+                            Give Review
+                        </a>
+                    </div>                                   
+                </div>     
+            </div>
+        </section>
+        <!-- End Story Intro Section -->
+
+        <!-- ======= Review Modal ======= -->
+        <div class="modal fade" id="modalReviewForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content about">
+                    <div class="modal-header text-center">
+                        <h4 class="modal-title w-100 font-weight-bold">Give Review</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form method="POST" class="form-group" action ="{% url 'add_review' %}">
+                        {% csrf_token %}
+                        <div class="modal-body mx-3">
+                            <div class="md-form mb-4">
+                                <i class="icofont-envelope " style="color: #006fbe; float: left; font-size: 30px; padding-right: 5px"></i>
+                                <input type="email" name="email" id="walkerForm-email" class="form-control validate" required placeholder="Your email" style="width: 90%; border-color: #006fbe">
+                                <label data-error="wrong" data-success="right" for="walkerForm-email"></label>
+                            </div>
+                            <div class="md-form mb-5" style="padding-top: 20px">
+                                <i class="icofont-book" style="color: #006fbe; float: left; font-size: 30px; padding-right: 5px"></i>
+                                <textarea type="text" name="review_text" id="reviewForm-review_text" class="form-control validate" required placeholder="Write your review..." style="width: 90%; border-color: #006fbe"></textarea>
+                                <label data-error="wrong" data-success="right" for="reviewForm-review_text"></label>
+                            </div>
+                            <div class="md-form mb-5 rating">
+                                <input type="radio" name="rating" id="reviewForm-star_5" value="5">
+                                <label for="reviewForm-star_5"></label>
+                                <input type="radio" name="rating" id="reviewForm-star_4" value="4">
+                                <label for="reviewForm-star_4"></label>
+                                <input type="radio" name="rating" id="reviewForm-star_3" value="3">
+                                <label for="reviewForm-star_3"></label>
+                                <input type="radio" name="rating" id="reviewForm-star_2" value="2">
+                                <label for="reviewForm-star_2"></label>
+                                <input type="radio" name="rating" id="reviewForm-star_1" value="1">
+                                <label for="reviewForm-star_1"></label>
+                            </div>
+                            <div class="md-form mb-4">
+                                <input type="hidden" name="walker_idd" value="{{ walker.id }}" id="walkerForm-walker_id" class="form-control validate">
+                            </div>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center content">
+                            <button class="btn btn-learn-more" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- End Review Modal -->
+
+        {% block reviewModal %}
+        
+        {% endblock %}
+
+    </main>
+{% endblock %}

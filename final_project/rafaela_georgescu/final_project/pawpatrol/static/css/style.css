@@ -1325,3 +1325,58 @@ section {
 #footer .credits a:hover {
   color: #008df1;
 }
+
+.pagination > li.active > a {
+  background-color:  #006fbe !important;
+  color: white !important;
+}
+
+.pagination > li > a {
+  color:  #006fbe !important;
+}
+
+.rating {
+  position: relative;
+  flex-direction: row-reverse;
+  /* transform: translate(-50%, -50%) rotateY(180deg); */
+  display:flex;
+}
+
+.rating input {
+  display: none;
+}
+
+.rating label {
+  /* display: inline-block; */
+  cursor: pointer;
+  width: 50px;
+}
+
+.rating label:before {
+  content: '\f000';
+  font-family: icofont;
+  color: lightblue;
+  font-size: 50px;
+  position: absolute;
+}
+
+.rating label:after {
+  content: '\f000';
+  font-family: icofont;
+  color: #006fbe;
+  font-size: 50px;
+  opacity: 0;
+  text-align:center;
+  padding-left: 0;
+  margin-left: 0;
+  transition: .5s;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.rating label:hover:after,
+.rating label:hover ~ label:after,
+.rating input:checked ~ label:after
+{
+  opacity: 1;
+  position: absolute;
+}
