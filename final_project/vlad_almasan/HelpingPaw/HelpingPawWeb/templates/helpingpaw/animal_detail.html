@@ -1,0 +1,20 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'HelpingPawWeb/style.css' %}">
+
+
+<div class="center">
+    <div class="card">
+        <img class="card-img" src= {{ MEDIA_URL }}{{ animal_detail.picture }} alt= {{ animal_detail.name }}>
+        <h1>{{ animal_detail.name }}</h1>
+        <p><b>Species:</b> {{ animal_detail.species }}</p>
+        <p><b>Personality:</b> {{ animal_detail.personality_type }}</p>
+        <p><b>Personality Description:</b> {{ animal_detail.personality_type.description }}</p>
+        {% if age_gate %}
+            <p><b>Age:</b> {{ animal_detail.age }} years old</p>
+        {% else %}
+            <p><b>Age:</b> {{ animal_detail.age }} year old</p>
+        {% endif %}  
+        <p> <b>Description:</b> {{ animal_detail.description }}</p>
+        <p><button class="button" onclick="document.location='/HelpingPaw/Reserve/{{ animal_detail.id }}'">Schedule For Adoption</button></p>
+    </div>
+</div>

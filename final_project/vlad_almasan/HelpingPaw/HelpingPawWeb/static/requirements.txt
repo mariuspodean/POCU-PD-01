@@ -1,0 +1,14 @@
+HelpingPaw requirements:
+
+- HelpingPaw will be an application that allows for pets available for adoption to be seen and be scheduled for a viewing online
+- The application must display available pets for adoption
+- The pets need to not be scheduled for viewing or adopted when displayed in the list
+- The pet will need to have a details screen with information about age, species, description and a picture
+- The application will have to display a list of shelters and the address and maximum capacity of each shelter
+- The application will have to display a list of companies or people who sponsored the shelters
+- In the list a description of what was provided will have to be shown as well as the date of when it was done
+- The application will need a form where people can add their support to the shelters and submitting it will add them to the sponsors list
+- The application will need a form where people can schedule pets for viewing
+- This form will have to allow them to enter their personal details as well as choose a shelter where the viewing will take place
+- The form will make a reservation record that can be later viewed from a list
+- Scheduling a pet will remove it from the pets list

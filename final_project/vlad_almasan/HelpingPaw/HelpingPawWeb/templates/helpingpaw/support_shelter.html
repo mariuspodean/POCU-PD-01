@@ -1,0 +1,25 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'HelpingPawWeb/style.css' %}">
+<div class="form-style-5">
+    <form action="/HelpingPaw/AddSupport" method="post">
+        {% csrf_token %}
+        <fieldset>
+            <legend>Support A Shelter</legend>
+            <input type="text" id="first_name" name="first_name" placeholder="First Name *" required>
+            <input type="text" id="last_name" name="last_name" placeholder="Last Name *" required>
+            <input id="email" type="email" name="email" placeholder="Email *" required>
+            <label for="shelter">Shelter:</label>
+            <select id="shelter" name="shelter" required>
+                {% for shelter in shelter_list %}
+                <option value={{shelter.pk}}>{{shelter.name}} ({{shelter.city}})</option>
+                {% endfor %}
+            </select>
+        </fieldset>
+        <br />
+        <fieldset>
+            <legend>Support Provided</legend>
+            <textarea id="support" name="support" placeholder="Add here the support you will be providing" required></textarea>
+        </fieldset>
+        <input class="button" type="submit" value="Add Your Support" />
+    </form>
+</div>

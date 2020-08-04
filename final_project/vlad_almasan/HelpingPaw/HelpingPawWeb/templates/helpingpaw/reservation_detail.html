@@ -1,0 +1,24 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'HelpingPawWeb/style.css' %}">
+<div class="form-style-5">
+    <form>
+        <fieldset>
+            <legend>Reservation Information</legend>
+            <input type="text" id="first_name" name="first_name" placeholder="First Name *" readonly value={{ reservation.first_name }}>
+            <input type="text" id="last_name" name="last_name" placeholder="Last Name *" readonly value={{ reservation.last_name }}>
+            <input id="email" type="email" name="email" placeholder="Email *" readonly value={{ reservation.email }}>
+            <label for="reserved_animal">Reserved Pet:</label>
+            <input type="text" id="reserved_animal name="reserved_animal" placeholder="Animal" readonly value ={{ reservation.reserved_animal.name }}>
+            <label for="reservation_date">Reservation Date: *</label>
+            <input type="datetime" id="reservation_date" name="reservation_date" readonly value={{ date }}>
+            <label for="shelter">Shelter:</label>
+            <input type="text" id="shelter", name="shelter" readonly value={{ reservation.reserved_shelter.name }}>
+        </fieldset>
+
+        <fieldset>
+            <legend>Additional Information</legend>
+            <textarea id="comments" name="comments" placeholder="Additional comments" readonly></textarea>
+        </fieldset>
+        <input type="button" onclick="document.location='/HelpingPaw/'" value="Home" />
+    </form>
+</div>

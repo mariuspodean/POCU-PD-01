@@ -1,0 +1,38 @@
+{% load static %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="{% static 'HelpingPawWeb/style.css' %}">
+<script type="text/javascript" src="{% static 'HelpingPawWeb/script.js' %}"></script>
+
+<div class="body-div">
+    <section>
+        <h1 class="table-header">Reservations</h1>
+        <div class="tbl-header">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <thead>
+            <tr>
+                <th>Reservation Owner</th>
+                <th>Shelter</th>
+                <th>Animal</th>
+            </tr>
+            </thead>
+        </table>
+        </div>
+        <div class="tbl-content">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <tbody>
+            {% for reservation in reservation_list %}  
+            <tr class="tr-content" onclick="document.location='/HelpingPaw/Reservation_Detail/{{reservation.id}}'">
+                <td> {{ reservation.first_name }}, {{ reservation.last_name}} </td>
+                <td> {{ reservation.reserved_shelter.name }}</td>
+                <td> {{ reservation.reserved_animal.name }} </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        </div>
+    </section>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

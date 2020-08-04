@@ -1,0 +1,26 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'HelpingPawWeb/style.css' %}">
+<div class="form-style-5">
+    <form action="/HelpingPaw/Reservation" method="post">
+        {% csrf_token %}
+        <fieldset>
+            <legend>Make Reservation</legend>
+            <input type="text" id="first_name" name="first_name" placeholder="First Name *" required>
+            <input type="text" id="last_name" name="last_name" placeholder="Last Name *" required>
+            <input id="email" type="email" name="email" placeholder="Email *" required>
+            <label for="reserved_animal">Reserved Pet:</label>
+            <input type="text" id="reserved_animal name="reserved_animal" placeholder="Animal" value={{ animal_detail.name }}>
+            <input type="hidden" id="animal_id" name="animal_id" value={{ animal_detail.id }}>
+            <label for="reservation_date">Reservation Date: *</label>
+            <input type="date" id="reservation_date" name="reservation_date" required>
+            <label for="shelter">Shelter:</label>
+            <input type="text" id="shelter" name="shelter" readonly value={{ animal_detail.shelter.name }}>
+            <input type="hidden" id="shelter_id" name="shelter_id" readonly value={{ animal_detail.shelter.id }}>
+        </fieldset>
+        <fieldset>
+            <legend>Additional Information</legend>
+            <textarea id="comments" name="comments" placeholder="Additional comments"></textarea>
+        </fieldset>
+        <input class="button" type="submit" value="Reserve" />
+    </form>
+</div>

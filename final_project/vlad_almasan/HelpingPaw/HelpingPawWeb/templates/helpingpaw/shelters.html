@@ -1,0 +1,25 @@
+{% load static %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="{% static 'HelpingPawWeb/style.css' %}">
+<script type="text/javascript" src="{% static 'HelpingPawWeb/script.js' %}"></script>
+
+<div class="body-div">
+    <section>
+        <!--for demo wrap-->
+        <h1 class="table-header">A list of our shelters</h1>
+        <div class="tbl-content">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <tbody>
+            {% for shelter in shelter_list %}  
+            <tr class="tr-content">
+                <td class='img-td'> <img src = {{ MEDIA_URL }}{{ shelter.picture }}> </td>
+                <td> {{ shelter.name }} </td>
+                <td> {{ shelter.city }}</td>
+                <td> Capacity: {{ shelter.capacity }} </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        </div>
+    </section>
+</div>
