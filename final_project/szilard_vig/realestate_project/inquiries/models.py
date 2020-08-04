@@ -2,6 +2,9 @@ from django.db import models
 from datetime import datetime
 
 class Inquiry(models.Model):
+    class Meta:
+        verbose_name_plural = "inquiries"
+
     listing = models.CharField(max_length=200)
     listing_id = models.IntegerField()
     name = models.CharField(max_length=200)
