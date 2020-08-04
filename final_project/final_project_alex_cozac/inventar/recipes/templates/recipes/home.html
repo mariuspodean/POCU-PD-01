@@ -1,21 +1,30 @@
-
-
-<h1>Homepage recipes</h1>
-
+<h1>Homepage</h1>
+ 
 {% extends 'recipes/base.html'%}
-
+ 
 {% block content %}
-
-{% for recipe in recipes %}
-
-{{ recipe.name }}
-
-<img src="{{recipe.image.url }}" alt="">
-
-
-
-{% endfor %}
-
-
+ 
+<section id="recipies" class="py-5">
+    <div class="container">
+      <h3 class="text-center mb-3">Recipies</h3>
+      <div class="row">
+        <!-- Recipe -->
+        {% for recipe in recipes %}
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card listing-preview">
+            <img class="card-img-top" src="{{ recipe.image.url }}" alt="">
+            <div class="card-body">
+              <div class="text-center">
+                <h4 class="text-primary">{{ recipe.name }}</h4>
+              </div>
+              <hr>
+              <a href="#" class="btn btn-primary btn-block">Prepare</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+ 
 {% endblock %}
-

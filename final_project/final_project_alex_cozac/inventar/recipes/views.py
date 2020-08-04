@@ -16,6 +16,8 @@ def create_recipe(request):
     if request.method == 'POST':
         name = request.POST['name']
 
+    
+
         item_title = request.POST['item_1']
         item_1 = Item.objects.filter(title=item_title).first()
         item_title = request.POST['item_2']
@@ -33,28 +35,32 @@ def create_recipe(request):
         item_title = request.POST['item_8']
         item_8 = Item.objects.filter(title=item_title).first()
 
-        image =  request.FILES
+        image = request.FILES['img']
 
-        recipe = Recipe(name=name, item1=item_1, item_2=item_2, item_3=item_3, item_4=item_4, item_5=item_5, item_6=item_6, item_7=item_7, item_8=item_8, image=image)
+        if item_1:
+            update_item(item_1)
+        if item_2:
+            update_item(item_2)
+        if item_3:
+            update_item(item_3)
+        if item_4:
+            update_item(item_4)
+        if item_5:
+            update_item(item_5)
+        if item_6:
+            update_item(item_6)
+        if item_7:
+            update_item(item_7)
+        if item_8:
+            update_item(item_8)
+
+        recipe = Recipe(name=name, item_1=item_1, item_2=item_2, item_3=item_3, item_4=item_4, item_5=item_5, item_6=item_6, item_7=item_7, item_8=item_8, image=image)
         recipe.save()
 
         return redirect('all_recipes')
     else:
         return render(request, 'recipes/create_recipe.html', {'items':items})
 
-# def create_item(request):
-#     distributors = Distributor.objects.all
-    
-#     if request.method == 'POST':
-#         title = request.POST['title']
-#         description = request.POST['description']
-#         quantity = request.POST['quantity']
-#         dist_name = request.POST['distributor']
-#         distributor = Distributor.objects.filter(title=dist_name).first()
-        
-#         item = Item(title=title, description=description, quantity=quantity, distributor=distributor)
-        
-#         item.save()
-#         return redirect('all_items')
-#     else:
-#         return render(request, 'items/create_item.html', {'distributors':distributors})
+def update_item(item):
+    quantity = item.quantity-1
+    Item.objects.filter(pk=item.id).update(quantity=quantity)
