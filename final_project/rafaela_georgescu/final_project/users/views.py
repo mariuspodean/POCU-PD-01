@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
-from users.models import Walker, Gender, User, Owner, Review
+from users.models import Walker, Gender, Owner, Review, User
 from datetime import datetime
 from django.views.generic import TemplateView, ListView, DetailView
 from django.core.paginator import Paginator
+from django.contrib import auth, messages
 
 
 class WalkerListingPageView(ListView):
@@ -27,11 +28,21 @@ def create_walker(request):
         email = request.POST['email']
         phone = request.POST['phone']
         photo = request.FILES['photo']
+        password = request.POST['password']
         gender = Gender.FEMALE
         description = request.POST['description']
-        walker = Walker(name=name, age=age, gender=gender, photo=photo, email=email, phone=phone, description=description)
-        walker.save()
-    return redirect('index')
+        if User.objects.filter(email=email).exists():
+            messages.error(request, 'Email already registered')
+            return redirect('create_walker')
+        else:
+            user = User.objects.create(email=email, password=password)
+            walker = Walker(name=name, age=age, gender=gender, photo=photo, email=email, phone=phone, description=description)
+            user.save()
+            walker.save()
+            messages.success(request, 'You are now registered')
+            auth.login(request, Walker)
+            return redirect('index')
+    return render(request, 'index.html')
 
 def create_owner(request):
     if request.method == 'POST':
@@ -43,10 +54,19 @@ def create_owner(request):
         photo = request.FILES['photo']
         gender = Gender.FEMALE
         address = request.POST['address']
-        owner = Owner(name=name, age=age, gender=gender, photo=photo, email=email, phone=phone, address=address)
-        owner.save()
-    return redirect('index')
+        password = request.POST['password']
 
+        if Owner.objects.filter(email=email).exists():
+            messages.error(request, 'Email already registered')
+            return redirect('create_owner')
+        else:
+            owner = Owner.objects.create_user(name=name, age=age, gender=gender, photo=photo, email=email, phone=phone, address=address)
+            owner.save()
+            messages.success(request, 'You are now registered')
+            auth.login(request, Owner)
+            return redirect('index')
+    return render(request, 'index.html')
+        
 def add_review(request):
     if request.method == 'POST':
         email = request.POST['email']

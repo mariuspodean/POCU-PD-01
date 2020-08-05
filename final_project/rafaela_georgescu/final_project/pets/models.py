@@ -32,7 +32,7 @@ class Pet(models.Model):
     main_photo = models.ImageField(upload_to=pet_directory_path)
     photo_1 = models.ImageField(upload_to=pet_directory_path, blank=True)
     photo_2 = models.ImageField(upload_to=pet_directory_path, blank=True)
-    owner = models.ForeignKey(Owner, on_delete=models.CASCADE)
+    owner = models.ForeignKey(Owner, on_delete=models.DO_NOTHING)
 
     def __str__(self):
         return self.name
