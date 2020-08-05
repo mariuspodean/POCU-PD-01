@@ -1,0 +1,11 @@
+
+<h2>Add a new ingredient</h2>
+
+{% if error_message %} <p>{{ error_message }}</p> {% endif %}
+
+<form action='' method='post' id='add_ingredient_form'>
+    {% csrf_token %}
+    {{ form }}
+    <input type='reset' name='clear_form' value='Clear'>
+    <input type='submit' name='add_ingredient' value='Add'>
+</form>
