@@ -1,7 +1,8 @@
 {% if ingredients_list %}
     <ul>
         {% for ingredient in ingredients_list %}
-            <li>{{ ingredient.name }} ( {{ ingredient.ingredient_type }} ) - {{ ingredient.quantity }} g - {{ ingredient.price }} RON/100g</li>
+            <li>{{ ingredient.name }} ({{ ingredient.ingredient_type }}) - {{ ingredient.quantity }} g - {{ ingredient.price }} RON/100g - 
+                {{ ingredient.update_date_time }}</li>
         {% endfor %}
     </ul>
 {% else %}

@@ -2,9 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 
-from .models import Ingredient_Type, Ingredient, Recipe_Type, Recipe, Cost
+from .models import IngredientType, Ingredient, RecipeType, Recipe, Cost
 
-from .forms import Add_Ingredient_Form, Add_Recipe_Form
+from .forms import AddIngredientForm, AddRecipeForm, CalculateCostForm
 
 
 def ingredients(request):
@@ -14,19 +14,12 @@ def ingredients(request):
 
 def add_ingredient(request):
     if request.method == 'POST':
-        form = Add_Ingredient_Form(request.POST)
+        form = AddIngredientForm(request.POST)
         if form.is_valid():
-            new_ingredient = Ingredient()
-            new_ingredient.name = form.cleaned_data['name']
-            new_ingredient.ingredient_type = form.cleaned_data['ingredient_type']
-            new_ingredient.quantity = form.cleaned_data['quantity']
-            new_ingredient.price = form.cleaned_data['price']
-#           new_ingredient.add_date = form.cleaned_data['add_date']
-            new_ingredient.update_date = form. cleaned_data['update_date']
-            new_ingredient.save()
+            form.save()
             return HttpResponseRedirect(reverse('ingredients'))
     else:
-        form = Add_Ingredient_Form()
+        form = AddIngredientForm()
     return render(request, 'beer_calculator/add_ingredient.html', {'form': form})
 
 
@@ -37,23 +30,30 @@ def recipes(request):
 
 def add_recipe(request):
     if request.method == 'POST':
-        form = Add_Recipe_Form(request.POST)
+        form = AddRecipeForm(request.POST)
         if form.is_valid():
-            new_recipe = Recipe()
-            new_recipe.name = form.cleaned_data['name']
-            new_recipe.recipe_type = form.cleaned_data['recipe_type']
-            new_recipe.ingredient = form.cleaned_data['ingredient']
- #           returned_quesryset = form.cleaned_data['ingredient']
-  #          for item in returned_quesryset.iterator():
-   #             new_recipe.ingredient.add(item)
- #           new_recipe.quantity = form.cleaned_data['quantity']
- #           new_recipe.add_date = form.cleaned_data['add_date']
-            new_recipe.update_date = form. cleaned_data['update_date']
-            new_recipe.save()
+            form.save()
             return HttpResponseRedirect(reverse('recipes'))
     else:
-        form = Add_Recipe_Form()
+        form = AddRecipeForm()
     return render(request, 'beer_calculator/add_recipe.html', {'form': form})
 
 def costs(request):
-    return HttpResponse("These are the costs for your recipe")
+    costs_list = Cost.objects.order_by('recipe')
+    context = {'costs_list': costs_list}
+    return render(request, 'beer_calculator/costs.html', context)
+
+def calc_cost(x, y):
+    return (x * y)/100
+
+def calculate_cost(request):
+    if request.method == 'POST':
+        form = CalculateCostForm(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.cost = calc_cost(instance.ingredient.price, instance.quantity)
+            instance.save()
+            return HttpResponseRedirect(reverse('costs'))
+    else:
+        form = CalculateCostForm()
+    return render(request, 'beer_calculator/calculate_cost.html', {'form': form})

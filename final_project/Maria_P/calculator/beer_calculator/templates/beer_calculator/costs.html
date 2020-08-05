@@ -1,0 +1,9 @@
+{% if costs_list %}
+    <ul>
+        {% for cost in costs_list %}
+            <li>{{ cost.recipe }}: {{ cost.ingredient }} - {{ cost.quantity }} g in recipe - {{ cost.cost }} RON ({{ cost.date_time }})</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p> No costs are available</p>
+{% endif %}

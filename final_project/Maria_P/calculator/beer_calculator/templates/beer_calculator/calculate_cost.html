@@ -1,0 +1,10 @@
+<h2>Calculate a new cost</h2>
+
+{% if error_message %} <p>{{ error_message }}</p> {% endif %}
+
+<form action='' method='post' id='add_cost'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type='reset' name='clear_form' value='Clear'>
+    <input type='submit' name='calculate_cost' value='Calculate'>
+</form>

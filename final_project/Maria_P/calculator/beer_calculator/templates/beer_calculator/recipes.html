@@ -1,7 +1,8 @@
 {% if recipes_list %}
     <ul>
         {% for recipe in recipes_list %}
-            <li><b>{{ recipe.name }} ( {{ recipe.recipe_type }} )</b> Ingredients: {{ recipe.ingredient.all|join:", " }} </li>
+            <li><b>{{ recipe.name }} ({{ recipe.recipe_type }})</b> Ingredients: {{ recipe.ingredients.all|join:", " }} - 
+                {{ recipe.update_date_time }} </li>
         {% endfor %}
     </ul>
 {% else %}

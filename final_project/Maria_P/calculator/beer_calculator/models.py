@@ -1,6 +1,7 @@
 from django.db import models
+from datetime import datetime
 
-class Ingredient_Type(models.Model):
+class IngredientType(models.Model):
     name = models.CharField(max_length=200)
 
     def __str__(self):
@@ -8,16 +9,15 @@ class Ingredient_Type(models.Model):
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=200)
-    ingredient_type = models.ForeignKey(Ingredient_Type, on_delete=models.PROTECT)
+    ingredient_type = models.ForeignKey(IngredientType, on_delete=models.PROTECT)
     quantity = models.DecimalField('Quantity (g)', max_digits=10, decimal_places=2)
     price = models.DecimalField('Price for 100 g (RON)', max_digits=10, decimal_places=2)
-#    add_date = models.DateTimeField('date added')
-    update_date = models.DateTimeField('date updated')
+    update_date_time = models.DateTimeField('Update Date & Time', default=datetime.now)
 
     def __str__(self):
         return self.name
 
-class Recipe_Type (models.Model):
+class RecipeType (models.Model):
     name = models.CharField(max_length=200)
 
     def __str__(self):
@@ -25,12 +25,9 @@ class Recipe_Type (models.Model):
 
 class Recipe(models.Model):
     name = models.CharField(max_length=200)
-    recipe_type = models.ForeignKey(Recipe_Type, on_delete=models.PROTECT)
-    ingredient = models.ManyToManyField(Ingredient)
- #   ingredient = models.ForeignKey(Ingredient, on_delete=models.PROTECT)
- #   quantity = models.DecimalField(max_digits=10, decimal_places=2)
- #   add_date = models.DateTimeField('date added')
-    update_date = models.DateTimeField('date updated')
+    recipe_type = models.ForeignKey(RecipeType, on_delete=models.PROTECT)
+    ingredients = models.ManyToManyField(Ingredient)
+    update_date_time = models.DateTimeField('Update Date & Time', default=datetime.now)
 
     def __str__(self):
         return self.name
@@ -38,7 +35,9 @@ class Recipe(models.Model):
 class Cost(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
-    cost = models.DecimalField(max_digits=10, decimal_places=2)
+    quantity = models.DecimalField('Quantity (g)', max_digits=10, decimal_places=2)
+    date_time = models.DateTimeField('Date & Time', default=datetime.now)
+    cost = models.DecimalField(editable=False, default=0, max_digits=10, decimal_places=2)
 
     def __str__(self):
         return f'{self.recipe} - {self.ingredient}'
