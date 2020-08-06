@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static%}
+{% block products %}
+<div>
+   <div>
+      <h1>Available products.</h1>
+   </div>
+</div>
+<table class="center">
+   <tr>
+      <th>Product Name</th>
+      <th>Product Code</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      {% for product in products %}
+   </tr>
+   <tr>
+      <td>
+         <p>{{product.name}}</p>
+      </td>
+      <td>
+         <p>{{product.id}}</p>
+      </td>
+      <td>
+         <p>{{product.quantity_available}}</p>
+      </td>
+      <td>
+         <p>{{product.price}}</p>
+      </td>
+   </tr>
+   {% endfor %}
+</table>
+<div class="row">
+   <div class="col-md-4"></div>
+   <div class="col-md-4">
+<form method="POST" action="{% url 'add_product' %}">
+   {% csrf_token %}
+   <h1 style="text-align: center;"> Add a new Product</h1>
+   <input type="text" id="name" placeholder="Enter product name:" name="name" required>
+   <input type="number" id="price" placeholder="Enter price:"name="price" required>
+   <input type="number" id="quantity" placeholder="Enter quantity: " name="quantity" required>
+   <input type="submit" value="Create new product." onclick="return confirm('Submit order?Please Confirm.')">
+</form>
+</div>
+<div class="col-md-4"></div>
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block customers %} 
+<h1>List of all customers.</h1>
+<table class="center">
+   <tr>
+      <th>Customer Name</th>
+      <th>Customer Code</th>
+      <th>First Order</th>
+      <th>Last Order</th>
+      {% for customer in customers %}
+   </tr>
+   <tr>
+      <td>
+         <p>{{customer.customer_name}}</p>
+      </td>
+      <td>
+         <p>{{customer.id}}</p>
+      </td>
+      <td>
+         <p>{{customer.first_order}}</p>
+      </td>
+      <td>
+         <p>{{customer.last_order}}</p>
+      </td>
+   </tr>
+   {% endfor %}
+</table>
+<div class="row">
+   <div class="col-md-4"></div>
+   <div class="col-md-4">
+<form  method="POST" action="{% url 'add_customer' %}">
+   {% csrf_token %}
+   <h1 style="text-align: center;"> Add a new Customer</h1>
+   <input type="text" id="customer_name" placeholder = "Enter new Customer name:" name="customer_name" required>
+   <input type="submit" value="Submit">
+</form>
+</div>
+<div class="col-md-4"></div>
+</div>
+{% endblock %}
