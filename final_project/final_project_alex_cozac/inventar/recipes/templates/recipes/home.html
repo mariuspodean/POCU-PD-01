@@ -1,28 +1,24 @@
-<h1>Homepage</h1>
- 
 {% extends 'recipes/base.html'%}
  
+{% load static %}
+
 {% block content %}
  
-<section id="recipies" class="py-5">
+<section class="page-section clearfix">
     <div class="container">
-      <h3 class="text-center mb-3">Recipies</h3>
-      <div class="row">
-        <!-- Recipe -->
-        {% for recipe in recipes %}
-        <div class="col-md-6 col-lg-4 mb-4">
-          <div class="card listing-preview">
-            <img class="card-img-top" src="{{ recipe.image.url }}" alt="">
-            <div class="card-body">
-              <div class="text-center">
-                <h4 class="text-primary">{{ recipe.name }}</h4>
-              </div>
-              <hr>
-              <a href="#" class="btn btn-primary btn-block">Prepare</a>
-            </div>
+      <div class="intro">
+        <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{% static 'img/intro.jpg'%}">
+        <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+          <h2 class="section-heading mb-4">
+            <span class="section-heading-upper">Fresh Coffee</span>
+            <span class="section-heading-lower">Worth Drinking</span>
+          </h2>
+          <p class="mb-3">Every cup of our quality artisan coffee starts with locally sourced, hand picked ingredients. Once you try it, our coffee will be a blissful addition to your everyday morning routine - we guarantee it!
+          </p>
+          <div class="intro-button mx-auto">
+            <a class="btn btn-primary btn-xl" href="{% url 'all_recipes' %}">Visit Us Today!</a>
           </div>
         </div>
-        {% endfor %}
       </div>
     </div>
   </section>

@@ -1,0 +1,20 @@
+- The idea of the app is to make it easier for a small coffe business to kepp the track of the stock
+    - preparing a product will update the stock for all the ingredients used for the products (coffe)
+    - when stock needs to be updated all the distributor contact info will be shown next to each ingredient
+
+- Distributor
+    - 1 page for add distributor with all the contact info
+    - 1 page to view the disctibutors
+
+- Ingredients
+    -  1 page for create ingredient
+        - ingredient will have title, description,quantity and a distributor
+    -  1 page for view ingredient with all the info (title, description,quantity,distributor)
+        
+
+- Recipes
+    - 1 page for create Recipes
+        - recipe create will use ingredients name and a presentation image
+    - 1 page for view recipe with the functionality to prepare recipe
+        - prepare will update the quantity based on the ingredients from recipe
+

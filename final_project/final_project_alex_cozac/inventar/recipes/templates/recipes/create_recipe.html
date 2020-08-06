@@ -6,16 +6,18 @@
 <head>
 <title>Create Recipe </title>
 </head>
+<style>
 
+</style>
 <body>
-    <section id="recipe" class="bg-light py-5">
+    <section id="recipe">
         <div class="container">
           <div class="row">
             <div class="col-md-6 mx-auto">
               <div class="card">
                 <div class="card-header bg-primary text-white">
                   <h4>
-                    <i class="fas fa-sign-in-alt"></i> Create recipe</h4>
+                    <i class="fas fa-sign-in-alt"></i> Create recipes</h4>
                 </div>
                 <div class="card-body">
                     <form action="{% url 'create_recipe' %}" method="POST" enctype="multipart/form-data">
@@ -25,78 +27,15 @@
                       <label for="name">Name</label>
                       <input type="text" name="name" class="form-control" required>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="item_1">Article 1</label>
-                        <select name="item_1" id="item_1" class="form-control" required>
-                          <option value=""></option>
-                        {% for item in items %}
-                          <option value="{{ item.title }}">{{ item.title }}</option>
-                        {% endfor %}
-                        </select> 
-                    </div>
 
                     <div class="form-group">
-                        <label for="item_2">Article 2</label>
-                        <select name="item_2" id="item_2" class="form-control" required>
-                          <option value=""></option>
-                        {% for item in items %}
-                          <option value="{{ item.title }}">{{ item.title }}</option>
-                        {% endfor %}
-                        </select> 
-                    </div>
- 
-                    <div class="form-group">
-                        <label for="item_3">Article 3</label>
-                        <select name="item_3" id="item_3" class="form-control">
-                          <option value=""></option>
-                        {% for item in items %}
-                          <option value="{{ item.title }}">{{ item.title }}</option>
-                        {% endfor %}
-                        </select> 
-                    </div>
+                        <select name="select-items" required="" id="id_items" multiple="">
+                            {% for item in items %}
+                            <option name = "items" value="{{ item.title }}">{{ item.title }}</option>
+                          {% endfor %}
+                    </select>
 
-                    <div class="form-group">
-                        <label for="item_4">Article 4</label>
-                        <select name="item_4" id="item_4" class="form-control">
-                          <option value=""></option>
-                        {% for item in items %}
-                          <option value="{{ item.title }}">{{ item.title }}</option>
-                        {% endfor %}
-                        </select> 
-                    </div>
-
-                    <div class="form-group">
-                        <label for="item_5">Article 5</label>
-                        <select name="item_5" id="item_5" class="form-control">
-                          <option value=""></option>
-                        {% for item in items %}
-                          <option value="{{ item.title }}">{{ item.title }}</option>
-                        {% endfor %}
-                        </select> 
-                    </div>
-
-                    <div class="form-group">
-                        <label for="item_6">Article 6</label>
-                        <select name="item_6" id="item_6" class="form-control">
-                          <option value=""></option>
-                        {% for item in items %}
-                          <option value="{{ item.title }}">{{ item.title }}</option>
-                        {% endfor %}
-                        </select> 
-                    </div>
-
-                    <div class="form-group">
-                        <label for="item_7">Article 7</label>
-                        <select name="item_7" id="item_7" class="form-control">
-                          <option value=""></option>
-                        {% for item in items %}
-                          <option value="{{ item.title }}">{{ item.title }}</option>
-                        {% endfor %}
-                        </select> 
-                    </div>
-
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="item_8">Article 8</label>
                         <select name="item_8" id="item_8" class="form-control">
                           <option value=""></option>
@@ -104,7 +43,7 @@
                           <option value="{{ item.title }}">{{ item.title }}</option>
                         {% endfor %}
                         </select> 
-                    </div>
+                    </div> -->
 
                     <div class="form-group">
                         <label for="img">Picture</label>
