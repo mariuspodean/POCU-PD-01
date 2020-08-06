@@ -28,13 +28,68 @@
         </section>
         <!-- End Breadcrumbs -->
 
+        <!-- Search Section -->
+        <section id="showcase">
+            <div class="container text-center about card" style="border-color: #006fbe">
+                <div class="search content">
+                    <form action="{% url 'search' %}" style="padding-top:20px">
+
+                        <!-- Form Row 1 -->
+                        <div class="form-row">
+                            <div class="col-md-4 mb-3">
+                                <input type="text" name="keywords" class="form-control" placeholder="Keyword">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <select name="genders" class="form-control">
+                                    <option selected="true" disabled="disabled">Gender</option>
+                                    {% for gender in genders %}
+                                    <option value="{{ gender }}">{{ gender }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <select name="sizes" class="form-control" id="type">
+                                    <option selected="true" disabled="disabled">Size</option>
+                                    {% for size in sizes %}
+                                    <option value="size">{{ size }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Form Row 2 -->
+                        <div class="form-row">
+                            <div class="col-md-4 mb-3">
+                                <input type="checkbox" name="is_friendly_with_dogs" id="is_friendly_with_dogs" value="dogs">
+                                <label for="is_friendly_with_dogs">Is friendly with dogs</label>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <input type="checkbox" name="is_vaccinated" id="is_vaccinated">
+                                <label for="is_vaccinated">Is vaccinated</label>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <input type="checkbox" name="is_microchipped" id="is_microchipped">
+                                <label for="is_microchipped">Is microchipped</label>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-4 mb-4 text-center">
+                            </div>
+                            <div class="col-md-4 mb-4 text-center">
+                                <button class="btn btn-learn-more btn-block mt-4" type="submit">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
 
         <!-- ======= Pet List Section ======= -->
         <section id="event-list" class="event-list">
             <div class="container">
                 <div class="row">
-                {% if object_list %}
-                    {% for pet in object_list %}
+                {% if pets %}
+                    {% for pet in pets %}
 
                     <!-- ======= Pet Section ======= -->
                     <div class="col-md-6 d-flex align-items-stretch">
@@ -63,7 +118,7 @@
 
                     <!-- ======= Empty List Section ======= -->
                     <div class="col-md-12">
-                        <p>No Dogs Available</p>
+                        <p>No Pets Available</p>
                     </div>
                     <!-- End Empty List Section -->
 

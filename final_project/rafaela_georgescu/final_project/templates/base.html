@@ -1,6 +1,9 @@
 {% include 'registration/_login.html' %}
 {% include 'registration/_register.html' %}
+{% include 'modals/_messages.html' %}
+
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,7 +31,6 @@
             <h1 class="logo mr-auto col-md-4">
                 <a href="{% url 'index' %}">Paw Patrol</a>
             </h1>
-            <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
             <nav class="nav-menu d-none d-lg-block col-md-6">
                 <ul>
                     <li
@@ -71,6 +73,24 @@
             </nav>
             <nav class="nav-menu d-none d-lg-block col-md-2" id="registration-container">
                 <ul>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item mr-3">
+                        <a href="{% url 'profile' %}">
+                            <i class="icofont-search-user"></i>
+                            Profile
+                        </a>
+                    </li>
+                    <li class="nav-item mr-3">
+                        <a href="javascript:{document.getElementById('logout').submit()}">
+                            <i class="icofont-sign-out"></i>
+                            Logout
+                        </a>
+                        <form action="{% url 'logout' %}" method="POST" id="logout">
+                            {% csrf_token %}
+                            <input type="hidden">
+                        </form>
+                    </li>
+                    {% else %}
                     <li class="nav-item mr-3">
                         <a href="#" data-toggle="modal" data-target="#modalRegisterForm">
                             <i class="icofont-user-alt-3"></i>
@@ -83,6 +103,7 @@
                             Login
                         </a>
                     </li>
+                    {% endif %}
                 </ul>
             </nav>
         </div>
@@ -91,6 +112,8 @@
     {% block loginModal %} {% endblock%}
     
     {% block registerModal %} {% endblock%}
+
+    {% block messagesModal %} {% endblock %}
 
     <!-- Main Content -->
     {% block content %} {% endblock %}
@@ -119,7 +142,6 @@
     <!-- End Footer -->
     <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
-
     <!-- Vendor JS Files -->
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
@@ -129,5 +151,13 @@
     <script src="{% static 'vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
     <!-- Template Main JS File -->
     <script src="{% static 'js/main.js' %}"></script>
+    <!-- <script>
+        $(document).ready(function() {
+            {% if messages %}
+                $('#messagesModal').show();
+                $('#messagesModal').addClass('show');
+            {% endif %}
+          });
+    </script> -->
 </body>
 </html>

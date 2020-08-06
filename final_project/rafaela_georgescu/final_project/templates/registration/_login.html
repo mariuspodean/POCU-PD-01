@@ -1,4 +1,5 @@
 {% block loginModal %}
+
 <!-- ======= Login Modal ======= -->
 <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -9,17 +10,17 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-                <form method="post" class="form-group">
+                <form class="form-group" action ="{% url 'login' %}" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="modal-body mx-3">
                     <div class="md-form mb-5" style="padding-top: 20px">
                         <i class="icofont-envelope " style="color: #006fbe; float: left; font-size: 30px; padding-right: 5px"></i>
-                        <input type="email" id="loginForm-email" class="form-control validate" required placeholder="Your email" style="width: 90%; border-color: #006fbe">
+                        <input type="email" name="email" id="loginForm-email" class="form-control validate" required placeholder="Your email" style="width: 90%; border-color: #006fbe">
                         <label data-error="wrong" data-success="right" for="loginForm-email"></label>
                     </div>
                     <div class="md-form mb-4">
                         <i class="icofont-lock prefix grey-text" style="color: #006fbe; font-size: 30px; float: left; padding-right: 5px"></i>                       
-                        <input type="password" id="loginForm-pass" class="form-control validate" required placeholder="Your email" style="width: 90%; border-color: #006fbe">
+                        <input type="password" name="password" id="loginForm-pass" class="form-control validate" required placeholder="Your email" style="width: 90%; border-color: #006fbe">
                         <label data-error="wrong" data-success="right" for="loginForm-pass"></label>
                     </div>
                 </div>
@@ -31,4 +32,5 @@
     </div>
 </div>
 <!-- End Login Modal -->
+
 {% endblock %}

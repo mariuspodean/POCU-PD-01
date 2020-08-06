@@ -1,24 +1,28 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from users.models import Walker, Gender, Owner, Review, User
 from datetime import datetime
 from django.views.generic import TemplateView, ListView, DetailView
 from django.core.paginator import Paginator
 from django.contrib import auth, messages
+from django.contrib.auth.decorators import login_required
+from django.db.models import F
 
 
 class WalkerListingPageView(ListView):
     template_name = 'walkers.html'
     model = Walker
-    paginate_by = 6
+    paginate_by = 4
 
 
-class WalkerDetailsPageView(DetailView):
-    template_name= 'walker.html'
-    pk_url_kwarg = 'walker_id'
-    model = Walker
+def walker_details(request, walker_id):
+    walker = get_object_or_404(Walker, pk=walker_id)
+    reviews = Review.objects.filter(walker=walker)
+    context = {
+        'walker': walker,
+        'reviews': reviews
+    }
+    return render(request, 'walker.html', context)
 
-class MyLoginView(TemplateView):
-    pass
 
 def create_walker(request):
     if request.method == 'POST':
@@ -31,17 +35,16 @@ def create_walker(request):
         password = request.POST['password']
         gender = Gender.FEMALE
         description = request.POST['description']
+
         if User.objects.filter(email=email).exists():
             messages.error(request, 'Email already registered')
-            return redirect('create_walker')
+            return redirect('/users/create_walker')
         else:
-            user = User.objects.create(email=email, password=password)
-            walker = Walker(name=name, age=age, gender=gender, photo=photo, email=email, phone=phone, description=description)
-            user.save()
+            walker = Walker.objects.create_user(name=name, age=age, gender=gender, photo=photo, email=email, phone=phone, description=description, password=password)
             walker.save()
             messages.success(request, 'You are now registered')
-            auth.login(request, Walker)
-            return redirect('index')
+            auth.login(request, walker)
+            return redirect('profile')
     return render(request, 'index.html')
 
 def create_owner(request):
@@ -56,33 +59,71 @@ def create_owner(request):
         address = request.POST['address']
         password = request.POST['password']
 
-        if Owner.objects.filter(email=email).exists():
+        if User.objects.filter(email=email).exists():
             messages.error(request, 'Email already registered')
-            return redirect('create_owner')
+            return redirect('/users/walkers/')
         else:
-            owner = Owner.objects.create_user(name=name, age=age, gender=gender, photo=photo, email=email, phone=phone, address=address)
+            owner = Owner.objects.create_user(name=name, age=age, gender=gender, photo=photo, email=email, phone=phone, address=address, password=password)
             owner.save()
             messages.success(request, 'You are now registered')
-            auth.login(request, Owner)
-            return redirect('index')
+            auth.login(request, owner)
+            return redirect('profile')
     return render(request, 'index.html')
         
 def add_review(request):
     if request.method == 'POST':
-        email = request.POST['email']
         review_text = request.POST['review_text']
         rating = int(request.POST.get('rating'))
         walker_id = request.POST['walker_idd']
-
+        if request.user.is_authenticated:
+            review_text = request.user.name.upper() + ': ' + review_text
+        else:
+            review_text = 'ANONYMOUS: ' + review_text
+        
         walker = Walker.objects.filter(pk=walker_id).first()
-        owner = Owner.objects.filter(email=email).first()
-        if owner:
-            review = Review(walker=walker, review_text=review_text, rating=rating)
-            review.save()
-            final_rating = update_rating(walker.rating, rating)
-            Walker.objects.filter(pk=walker_id).update(rating=final_rating)
+        review = Review(walker=walker, review_text=review_text, rating=rating)
+        review.save()
+        update_rating(walker)
+
     return redirect('/users/walkers/'+walker_id)
 
 
-def update_rating(walker_rating, new_rating):
-    return (walker_rating + new_rating) / 2
+def update_rating(walker):
+    sum = 0
+    walker_reviews = Review.objects.filter(walker=walker)
+    reviews_no = walker_reviews.count()
+    for review in walker_reviews:
+        sum += review.rating
+    Walker.objects.filter(pk=walker.id).update(rating=sum / reviews_no)
+
+
+def login(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        password = request.POST['password']
+        user = auth.authenticate(email=email, password=password)
+        if user is not None:
+            auth.login(request, user)
+            messages.success(request, 'You are now logged in')
+            return redirect('profile')
+        else:
+            messages.error(request, 'Wrong credentials')
+            return redirect('login')
+    return render(request, 'index.html')
+
+
+def logout(request):
+    if request.method == 'POST':
+        auth.logout(request)
+        messages.success(request, 'You are now logged out')
+    return redirect('index')
+
+
+@login_required(login_url='/users/login/')
+def profile(request):
+    # user_inquiries = Inquiry.objects.order_by('-inquiry_date').filter(user_id=request.user.id)
+    # context = {
+    #     'inquiries' : user_inquiries
+    # }
+    # return render(request, 'accounts/dashboard.html', context)
+    return render(request, 'profile.html')

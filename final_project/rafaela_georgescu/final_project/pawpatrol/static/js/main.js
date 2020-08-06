@@ -172,6 +172,10 @@
       $(".walker").hide();
       $(".user-buttons").show();                                             
     });
+    $("#add_pet").click(function() {
+      $("#add_pet_form").show(); 
+      $("#add_pet").hide();
+    });
   });
 
 })(jQuery);

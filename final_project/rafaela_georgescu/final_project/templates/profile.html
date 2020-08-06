@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+> Profile 
+{% endblock %}
+
+{% block content %}
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Profile</h2>
+                <ol>
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li>Profile</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+    <!-- End Breadcrumbs -->
+
+    <section id="add_pet" class="about">
+        <div class="modal-footer d-flex justify-content-center content pet-button" id="div-pet">
+            <button class="btn btn-learn-more" id="add_pet">Add a Pet</button>
+        </div>
+    </section>
+    
+    <section id="add_pet_form" style="display: none">
+        <div class="container about">
+            <form class="form-group owner" method="POST" enctype="multipart/form-data"  action="{% url 'add_pet' %}">
+                {% csrf_token %}
+                <div class="modal-body mx-3 about">
+                    <div class="md-form mb-4"  style="padding-top: 20px">
+                        <i class="icofont-user-alt-3" style="color: #006fbe; float: left; font-size: 30px; padding-right: 5px"></i>
+                        <input type="text" name="name" id="petForm-name" class="form-control validate" required placeholder="Your pet's name" style="width: 90%; border-color: #006fbe">
+                        <label data-error="wrong" data-success="right" for="petForm-name"></label>
+                    </div>
+                    <div class="md-form mb-4">
+                        <i class="icofont-clock-time" style="color: #006fbe; float: left; font-size: 30px; padding-right: 5px"></i>
+                        <input type="text" name="age" id="petForm-age" class="form-control validate" required placeholder="Age" style="width: 30%; border-color: #006fbe">
+                        <label data-error="wrong" data-success="right" for="petForm-age"></label>
+                    </div>
+                    <div class="md-form mb-4">
+                        <i class="icofont-camera" style="color: #006fbe; font-size: 30px; float: left; padding-right: 5px"></i>
+                        <label for="myfile">Select image:</label>
+                        <input type="file" class="form-control-file" name="main_photo" id="petForm-main_photo" required >
+                        <label data-error="wrong" data-success="right" for="petForm-photo"></label>
+                    </div>
+                    <div class="md-form mb-4">
+                        <i class="icofont-camera" style="color: #006fbe; font-size: 30px; float: left; padding-right: 5px"></i>
+                        <label for="myfile">Select image:</label>
+                        <input type="file" class="form-control-file" name="photo_1" id="petForm-photo_1"  >
+                        <label data-error="wrong" data-success="right" for="petForm-photo"></label>
+                    </div>
+                    <div class="md-form mb-4">
+                        <i class="icofont-camera" style="color: #006fbe; font-size: 30px; float: left; padding-right: 5px"></i>
+                        <label for="myfile">Select image:</label>
+                        <input type="file" class="form-control-file" name="photo_2" id="petForm-photo_2"  >
+                        <label data-error="wrong" data-success="right" for="petForm-photo"></label>
+                    </div>
+                    <div class="md-form mb-4">
+                        <i class="icofont-info-circle" style="color: #006fbe; font-size: 30px; float: left; padding-right: 5px"></i>                       
+                        <input type="text" name="breed" id="petForm-breed" class="form-control validate" required placeholder="Breed" style="width: 90%; border-color: #006fbe">
+                        <label data-error="wrong" data-success="right" for="petForm-breed"></label>
+                    </div>
+                    <div class="md-form mb-4">
+                        <i class="icofont-info-circle" style="color: #006fbe; font-size: 30px; float: left; padding-right: 5px"></i>                       
+                        <textarea type="text" name="description" id="petForm-description" class="form-control validate" placeholder="Description" style="width: 90%; border-color: #006fbe"></textarea>
+                        <label data-error="wrong" data-success="right" for="petForm-description"></label>
+                    </div>
+                    <div class="md-form mb-4">
+                        <i class="icofont-info-circle" style="color: #006fbe; font-size: 30px; float: left; padding-right: 5px"></i>                       
+                        <textarea type="text" name="descripspecial_nneds" id="petForm-special_needs" class="form-control validate" placeholder="Special needs" style="width: 90%; border-color: #006fbe"></textarea>
+                        <label data-error="wrong" data-success="right" for="petForm-special_needs"></label>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <input type="checkbox" name="is_friendly_with_dogs" id="is_friendly_with_dogs" value="dogs">
+                        <label for="is_friendly_with_dogs">Is friendly with dogs</label>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <input type="checkbox" name="is_vaccinated" id="is_vaccinated" value="vaccinated">
+                        <label for="is_vaccinated">Is vaccinated</label>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <input type="checkbox" name="is_microchipped" id="is_microchipped" value="microchipped">
+                        <label for="is_microchipped">Is microchipped</label>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <input type="checkbox" name="is_friendly_with_cats" id="is_friendly_with_cats" value="cats">
+                        <label for="is_friendly_with_dogs">Is friendly with cats</label>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <input type="checkbox" name="is_neutred" id="is_neutred" value="neutred">
+                        <label for="is_vaccinated">Is neutred</label>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <input type="checkbox" name="is_friendly_with_kids" id="is_friendly_with_kids" value="kids">
+                        <label for="is_friendly_with_kids">Is friendly with kids</label>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-center content">
+                    <button class="btn btn-learn-more" type="submit">Add</button>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>
+
+{% endblock %}
