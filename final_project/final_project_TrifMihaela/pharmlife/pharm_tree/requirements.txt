@@ -1,0 +1,24 @@
+Am nevoie de o aplicatie ca si administrator de farmacie.
+Vreau sa pot tine evindenta la medicamentele care sunt in Farmacie cu nume, stoc si data la care o sa expire. De asemenea as dori sa stiu cand stocul unuia dintre ele ii 0 sa primesc o notificare pentru ca sa se poata reface stocul.
+Vreau sa pot tine evidenta pacientilor care vin in Farmacie cu nume, boala de care sufera si adresa de email in caz ca ar fi nevoie sa ii contactam ulterior. De asemenea vreau sa pot adauga pacienti in pagina de Pacienti ca sa fie mai usor pentru fiecare farmacist in parte
+Vreau sa tin evidenta retetelor care sunt eliberate din farmacie. Vreau sa stiu ce medicamente au fost eliberate, date legate de pacient si data in care trebuie reinoita sau eliberata pe urmatoarea luna. 
+Ca si administrator de applicatie vreau sa am posibilitatea sa adaug sau sa modific atat pacientii, medicamente cat si retetele.
+1.	Home Page-ul sa contina un text, legat de farmacie
+2.	A doua pagina sa fie o lista cu toate medicamente existente in farmacie sub forma de tabel.
+    a.	O coloana cu numarul intrari in stoc
+    b.	O coloanal cu numele medicamentului
+    c.	O coloanal cu data de expirare 
+    d.	O coloanal cu stocul existent 
+        i.	Pe aceasta pagina vreau sa apara un mesaj cand stocul la unul dintre medicamnte este 0
+3.	A treia pagina sa contina Pacientii sub forma de tabel
+    a.	O coloana cu numarul intrari in gestiune
+    b.	O coloana cu numele pacientului
+    c.	O coloana cu boala pentru care a venit
+    d.	O coloanal cu emailul personal
+            i.	In pagina sa fie un formular prin care sa se poata adouga in lista pacienti noi
+4.	A patra pagina sa fie cu retele eliberate in farmacie sub forma de table
+    a.	O coloana cu detalii legate de pacient si anume: Numele si emailul
+    b.	O coloana cu data de reinoire a retetei 
+    c.	O coloanal cu medicamentele eliberate pe aceasta reteta
+5.	Ultima pagina sa fie Contact Us
+    a.	Aici sa contina detalii legate de farmacie sub forma de text: Adresa si Numele 

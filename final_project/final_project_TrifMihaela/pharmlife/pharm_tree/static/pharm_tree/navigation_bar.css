@@ -1,0 +1,107 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('Pharm_tree.jpg');
+    font-family: 'Courier New', Courier, monospace;
+    font-style: oblique;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+}
+.formtable{
+    width: 25%;
+    height: 25%;
+    margin-left:75%; 
+    margin-right:0px;
+}
+input[type=submit] {
+    width: 70%;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+input[type=submit]:hover {
+    background-color: #45a049;
+  }
+input[type=text], select {
+    width: 100%;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+.container{
+     
+      background-color: rgb(220,220,220);
+      background-color: rgb(220,220,220 0.3);
+      align-content: center;
+
+  }
+.nav ul {
+    
+    list-style-type: none;
+    background-color: rgb(52, 131, 65);
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    width: 2000px;
+    height: 40px;
+}
+
+.nav a { 
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    margin: 0;
+    border-left: 0px;
+    border-right: olive 0px;
+    padding: .2em 1em; 
+    font-size: 25px;
+    font-family: monospace;
+    transform: translate(-50%, -50%);
+
+}
+
+.nav a:hover {
+    background-color: #5ea174;
+}
+
+.nav a.active {
+    background-color: #fff;
+    color: #444;
+    cursor: default;
+}
+.nav li {
+    display: inline;
+    margin-right: 0px;
+}
+.bg-text {
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 80%;
+    padding: 20px;
+    text-align: center;
+  }
+  .alert{
+    margin-left:80%; 
+    margin-right:0px;
+}
+
+.add{
+    height:400px;
+    width:500px;
+    margin-left:29%; 
+    margin-right:0px;
+}
+.pagination{
+    margin-bottom: 1px;
+    margin-left:45%; 
+    margin-right:0px;
+}

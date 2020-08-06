@@ -1,0 +1,53 @@
+{% extends "pharm_tree/base.html" %}
+{% load static %}
+{% block content %}
+        <div class='formtable'>
+        <form class ='pacientform' method='POST'>
+          {% csrf_token %}
+          {{ form.as_p }}
+        <input type = 'submit' value = 'Save' />
+        </form>
+      </div>
+        <br></br>
+        <main role ='main' class="pat_table">
+                <table class="table table-bordered table-grey">
+                        <thead>
+                          <tr>
+                            <th scope="col">Number</th>
+                            <th scope="col">Name of the pacient</th>
+                            <th scope="col">Disease</th>
+                            <th scope="col">Email address</th>
+                          </tr>
+                        </thead>
+                        
+                        {% for pac in list_pacients %}
+                        <tbody>
+                          <tr>
+                            <th scope="row">{{pac.id}}</th>
+                            <th scope="row">{{pac.name_pacient}}</th>
+                            <th scope="row">{{pac.disease}}</th>
+                            <th scope="row">{{pac.email_address}}</th>
+                          </tr>
+                        </tbody>
+                        {% endfor %}
+                      </table>
+                      <br></br>
+                      <div class="pagination">
+                        <span class="step-links">
+                            {% if list_pacients.has_previous %}
+                                <a href="?page=1">&laquo; first</a>
+                                <a href="?page={{ list_pacients.previous_page_number }}">previous</a>
+                            {% endif %}
+                    
+                            <span class="current">
+                                Page {{ list_pacients.number }} of {{ list_pacients.paginator.num_pages }}.
+                            </span>
+                    
+                            {% if list_pacients.has_next %}
+                                <a href="?page={{ list_pacients.next_page_number }}">next</a>
+                                <a href="?page={{ list_pacients.paginator.num_pages }}">last &raquo;</a>
+                            {% endif %}
+                        </span>
+                    </div>
+        </main>
+{% endblock content %}
