@@ -15,18 +15,16 @@
     <caption>List of costs</caption>
     <thead>
         <tr>
-            <th scope="col">#</th>
             <th scope="col">Recipe</th>
             <th scope="col">Ingredient</th>
             <th scope="col">Quantity (g)</th>
-            <th scope="col">Cost</th>
+            <th scope="col">Cost (RON)</th>
             <th scope="col">Date & Time</th>
         </tr>
     </thead>
     <tbody>
         {% for cost in costs_list %}
         <tr>
-            <th scope="row">{{ cost.id }}</th>
             <td>{{ cost.recipe }}</td>
             <td>{{ cost.ingredient }}</td>
             <td>{{ cost.quantity }}</td>
@@ -38,7 +36,7 @@
 </table>
 
 {% else %}
-<p> No costs are available</p>
+<p class="no-entries-available">No costs are available</p>
 {% endif %}
 
 {% endblock %}

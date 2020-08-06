@@ -12,10 +12,9 @@
 
 {% if recipes_list %}
 <table class="table table-striped table-bordered table-hover">
-    <caption>List of costs</caption>
+    <caption>List of recipes</caption>
     <thead>
         <tr>
-            <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Type</th>
             <th scope="col">Ingredients</th>
@@ -25,7 +24,6 @@
     <tbody>
         {% for recipe in recipes_list %}
         <tr>
-            <th scope="row">{{ recipe.id }}</th>
             <td>{{ recipe.name }}</td>
             <td>{{ recipe.recipe_type }}</td>
             <td>{{ recipe.ingredients.all|join:", " }}</td>
@@ -35,7 +33,7 @@
     </tbody>
 </table>
 {% else %}
-<p> No recipes are available</p>
+<p class="no-entries-available"> No recipes are available</p>
 {% endif %}
 
 {% endblock %}

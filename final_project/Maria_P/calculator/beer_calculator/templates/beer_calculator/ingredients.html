@@ -12,10 +12,9 @@
 
 {% if ingredients_list %}
 <table class="table  table-striped table-bordered table-hover">
-    <caption>List of costs</caption>
+    <caption>List of ingredients</caption>
     <thead>
         <tr>
-            <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Type</th>
             <th scope="col">Quantity (g)</th>
@@ -26,7 +25,6 @@
     <tbody>
         {% for ingredient in ingredients_list %}
         <tr>
-            <th scope="row">{{ ingredient.id }}</th>
             <td>{{ ingredient.name }}</td>
             <td>{{ ingredient.ingredient_type }}</td>
             <td>{{ ingredient.quantity }}</td>
@@ -37,7 +35,7 @@
     </tbody>
 </table>
 {% else %}
-<p> No ingredients are available</p>
+<p class="no-entries-available"> No ingredients are available</p>
 {% endif %}
 
 {% endblock %}

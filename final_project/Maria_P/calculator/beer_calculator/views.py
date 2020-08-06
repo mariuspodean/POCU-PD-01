@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
+from django.core.paginator import Paginator
 
 from .models import IngredientType, Ingredient, RecipeType, Recipe, Cost
 
@@ -51,7 +52,7 @@ def add_recipe(request):
     return render(request, 'beer_calculator/add_recipe.html', {'form': form})
 
 def costs(request):
-    costs_list = Cost.objects.order_by('recipe')
+    costs_list = Cost.objects.order_by('-date_time')
     context = {
         'costs_list': costs_list,
         'costs_page': 'active'

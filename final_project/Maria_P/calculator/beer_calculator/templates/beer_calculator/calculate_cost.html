@@ -36,7 +36,8 @@
     {% endfor %}
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-outline-dark">{% trans "Submit" %}</button>
+            <button type="submit" class="btn btn-outline-dark">{% trans "Calculate" %}</button>
+            <a class="btn btn-outline-dark" href="{% url 'costs' %}" role="button">Cancel</a>
         </div>
     </div>
 </form>
