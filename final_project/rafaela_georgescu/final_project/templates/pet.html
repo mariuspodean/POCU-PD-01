@@ -102,8 +102,8 @@
                             {% endif %}
                         </p>
                         <p class="font-italic text-center">
-                            <i class="icofont-speech-comments"></i>
                             {% if dog.special_needs %}
+                            <i class="icofont-speech-comments"></i>
                                 Special needs: {{ dog.special_needs }}
                             {% endif %}
                         </p>
@@ -134,16 +134,62 @@
                     <div class="col-md-1 card-body text-center">
                     </div>
                 </div>
-                <div class="about" style="text-align:center; bottom: 10px; margin-top: auto; padding-top: 10px">
-                    <div class="content">
-                        <button class="btn-learn-more" data-toggle="modal" data-target="#modalAppointmentForm">
-                            Make Appointment
-                        </a>
-                    </div>                                   
-                </div>     
+                {% if user.is_authenticated %}
+                    <div class="about" style="text-align:center; bottom: 10px; margin-top: auto; padding-top: 10px">
+                        <div class="content">
+                            <button class="btn-learn-more" data-toggle="modal" data-target="#modalAppointmentForm">
+                                Make Appointment
+                            </a>
+                        </div>                                   
+                    </div> 
+                {% endif %}    
             </div>
         </section>
         <!-- End Story Intro Section -->
+
+        <div class="modal fade" id="modalAppointmentForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content about">
+                    <div class="modal-header text-center">
+                        <h4 class="modal-title w-100 font-weight-bold">Make appointment</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form method="POST" class="form-group" action ="{% url 'add_appointment' %}">
+                        {% csrf_token %}
+                        <div class="modal-body mx-3">
+                            <div class="col-md-6 mb-4">
+                                <select name="times" class="form-control" id="type">
+                                    <option selected="true" disabled="disabled">Part of the day</option>                           
+                                    <option name='morning' value="In the morning">In the morning</option>
+                                    <option name='evening' value="In the evening">In the evening</option>
+                                    <option name='night' value="At night">At night</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <select id="appointmentdateslist" name="dates" class="form-control">
+                                    <option selected="true" disabled="disabled">Date</option>                           
+                                    <option value="10 August 2020">10 August 2020</option> 
+                                    <option value="11 August 2020">11 August 2020</option> 
+                                    <option value="12 August 2220">12 August 2020</option>                                  
+                                    <option value="13 August 2320">13 August 2020</option>
+                                    <option value="14 August 2420">14 August 2020</option> 
+                                    <option value="15 August 2520">15 August 2020</option>                                  
+                                    <option value="16 August 2620">16 August 2020</option>                                         
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <input type="hidden" value="{{dog.id}}" name="pet_id" class="form-control validate">
+                            </div>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center content">
+                            <button class="btn btn-learn-more" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
     </main>
 {% endblock %}

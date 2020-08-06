@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from users.models import Walker, Gender, Owner, Review, User
+from pets.models import Pet
 from datetime import datetime
 from django.views.generic import TemplateView, ListView, DetailView
 from django.core.paginator import Paginator
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import F
+from appointments.models import Appointment
 
 
 class WalkerListingPageView(ListView):
@@ -121,9 +123,22 @@ def logout(request):
 
 @login_required(login_url='/users/login/')
 def profile(request):
-    # user_inquiries = Inquiry.objects.order_by('-inquiry_date').filter(user_id=request.user.id)
-    # context = {
-    #     'inquiries' : user_inquiries
-    # }
-    # return render(request, 'accounts/dashboard.html', context)
-    return render(request, 'profile.html')
+    try: 
+        owner = Owner.objects.get(pk=request.user.id)
+    except Owner.DoesNotExist:
+        owner = None
+    try: 
+        walker = Walker.objects.get(pk=request.user.id)
+    except Walker.DoesNotExist:
+        walker = None
+    # walker = get_object_or_404(Walker, pk=request.user.id)
+    pets = Pet.objects.filter(owner=owner)
+    appointments = Appointment.objects.filter(walker=request.user)
+    context = {
+        'owner': owner,
+        'walker': walker,
+        'pets': pets,
+        'appointments': appointments
+    }
+    # return render(request, 'walker.html', context)
+    return render(request, 'profile.html', context)

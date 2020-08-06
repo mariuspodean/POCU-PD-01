@@ -10,7 +10,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form method="POST" class="form-group">
+            <form method="POST" class="form-group" action ="{% url 'add_review' %}">
                 {% csrf_token %}
                 <div class="modal-body mx-3">
                     <div class="md-form mb-5" style="padding-top: 20px">
@@ -18,9 +18,20 @@
                         <textarea type="text" name="review_text" id="reviewForm-review_text" class="form-control validate" required placeholder="Write your review..." style="width: 90%; border-color: #006fbe"></textarea>
                         <label data-error="wrong" data-success="right" for="reviewForm-review_text"></label>
                     </div>
-                    <div class="md-form mb-4">
-                        <input type="radio" name="rating" id="reviewForm-star_1">
+                    <div class="md-form mb-5 rating">
+                        <input type="radio" name="rating" id="reviewForm-star_5" value="5">
+                        <label for="reviewForm-star_5"></label>
+                        <input type="radio" name="rating" id="reviewForm-star_4" value="4">
+                        <label for="reviewForm-star_4"></label>
+                        <input type="radio" name="rating" id="reviewForm-star_3" value="3">
+                        <label for="reviewForm-star_3"></label>
+                        <input type="radio" name="rating" id="reviewForm-star_2" value="2">
+                        <label for="reviewForm-star_2"></label>
+                        <input type="radio" name="rating" id="reviewForm-star_1" value="1">
                         <label for="reviewForm-star_1"></label>
+                    </div>
+                    <div class="md-form mb-4">
+                        <input type="hidden" name="walker_idd" value="{{ walker.id }}" id="walkerForm-walker_id" class="form-control validate">
                     </div>
                 </div>
                 <div class="modal-footer d-flex justify-content-center content">
