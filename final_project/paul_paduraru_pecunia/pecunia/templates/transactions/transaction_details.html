@@ -1,0 +1,237 @@
+{% extends 'base.html' %}
+
+{% block transaction %}
+
+<div class="col-lg-8 col-md-8 col-12" id="main-area">
+    <section id="second">
+        <div class="monthly-budget income">
+            <div class="budget-head clearfix">
+                <div class="budget-type-heading">Transaction Details</div>
+                <div class="budget-type-filter clearfix">
+                    <div class="more-option">
+                        <svg width="3" height="13" viewBox="0 0 3 13" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="1.5" cy="11.5" r="1.5" transform="rotate(-90 1.5 11.5)"
+                                fill="#00D498" />
+                            <circle cx="1.5" cy="6.5" r="1.5" transform="rotate(-90 1.5 6.5)"
+                                fill="#00D498" />
+                            <circle cx="1.5" cy="1.5" r="1.5" transform="rotate(-90 1.5 1.5)"
+                                fill="#00D498" />
+                        </svg>
+  
+                    </div>
+                </div>
+            </div>
+  
+  
+            {% if transaction %}
+            <div class="budget-body">
+                <div class="type-of-revenu-head clearfix">
+                    <!-- <div class="custom-heading">
+                        All transactions
+                        <span class="icon">
+                            <svg width="12" height="7" viewBox="0 0 12 7" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M11 6L6 1L1 6" stroke="white" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+  
+                        </span>
+                    </div> -->
+                    <div class="custom-date-time">Last updated: ----</div>
+                </div>
+                <div class="table-body">
+                    <div class="table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>
+                                        Name
+                                        <span class="order up">
+                                            <span class="up-arrow">
+                                                <svg width="6" height="4" viewBox="0 0 6 4" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path opacity="0.5" d="M1 3L3 1L5 3" stroke="white"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+  
+                                            </span>
+                                            <span class="down-arrow">
+                                                <svg width="6" height="4" viewBox="0 0 6 4" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path opacity="0.5" d="M5 1L3 3L1 1" stroke="white"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+  
+                                            </span>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        Amount
+                                        <span class="order up">
+                                            <span class="up-arrow">
+                                                <svg width="6" height="4" viewBox="0 0 6 4" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path opacity="0.5" d="M1 3L3 1L5 3" stroke="white"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+  
+                                            </span>
+                                            <span class="down-arrow">
+                                                <svg width="6" height="4" viewBox="0 0 6 4" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path opacity="0.5" d="M5 1L3 3L1 1" stroke="white"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+  
+                                            </span>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        Date
+                                        <span class="order up">
+                                            <span class="up-arrow">
+                                                <svg width="6" height="4" viewBox="0 0 6 4" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path opacity="0.5" d="M1 3L3 1L5 3" stroke="white"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+  
+                                            </span>
+                                            <span class="down-arrow">
+                                                <svg width="6" height="4" viewBox="0 0 6 4" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path opacity="0.5" d="M5 1L3 3L1 1" stroke="white"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+  
+                                            </span>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        Type
+                                        <span class="order up">
+                                            <span class="up-arrow">
+                                                <svg width="6" height="4" viewBox="0 0 6 4" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path opacity="0.5" d="M1 3L3 1L5 3" stroke="white"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+  
+                                            </span>
+                                            <span class="down-arrow">
+                                                <svg width="6" height="4" viewBox="0 0 6 4" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path opacity="0.5" d="M5 1L3 3L1 1" stroke="white"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+  
+                                            </span>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        Subtype
+                                        <span class="order up">
+                                            <span class="up-arrow">
+                                                <svg width="6" height="4" viewBox="0 0 6 4" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path opacity="0.5" d="M1 3L3 1L5 3" stroke="white"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+  
+                                            </span>
+                                            <span class="down-arrow">
+                                                <svg width="6" height="4" viewBox="0 0 6 4" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path opacity="0.5" d="M5 1L3 3L1 1" stroke="white"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+  
+                                            </span>
+                                        </span>
+                                    </td>
+                                    <td>Account</td>
+                                    <td></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <input type="text" value="{{ transaction.comment }}">
+                                    </td>
+                                    <td>
+                                        <input type="text" value="{{transaction.account.currency}}&nbsp;{{transaction.amount}}">
+                                    </td>
+                                    <td>
+                                        <input type="text" value="{{ transaction.date }}">
+                                    </td>
+                                    <td>
+                                        <select>
+                                          <option disabled selected value> -- none -- </option>
+                                            <option>Deposit</option>
+                                            <option>Withdrawl</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select>                                      
+                                          {% for subtype in subtypes %}
+                                          {% if transaction.transaction_subtype.name == subtype.name %}
+                                          <option selected>{{subtype.name}}</option>
+                                          {% endif %}
+                                          {% if transaction.transaction_subtype.name != subtype.name %}
+                                          <option>{{subtype.name}}</option>
+                                           {% endif %}
+                                            
+                                          {% endfor %}
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input type="text" value="{{ transaction.account.name }}">
+                                    </td>
+                                    <td>
+                                        <div class="option clearfix">
+  
+                                            <div class="cm-delete">
+                                                <svg width="11" height="12" viewBox="0 0 11 12" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M1 3H2H10" stroke="white"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path
+                                                        d="M3.5 3V2C3.5 1.45 3.95 1 4.5 1H6.5C7.05 1 7.5 1.45 7.5 2V3M9 3V10C9 10.55 8.55 11 8 11H3C2.45 11 2 10.55 2 10V3H9Z"
+                                                        stroke="white" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M4.5 5.5V8.5" stroke="white"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M6.5 5.5V8.5" stroke="white"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+  
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="add-more">
+                            <span class="icon">
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M6 11C8.76142 11 11 8.76142 11 6C11 3.23858 8.76142 1 6 1C3.23858 1 1 3.23858 1 6C1 8.76142 3.23858 11 6 11Z"
+                                        stroke="#00D498" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M6 4V8" stroke="#00D498" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M4 6H8" stroke="#00D498" stroke-linecap="round"
+                                        stroke-linejoin="round" /> </svg>
+                            </span> Update
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <p>No transaction available.</p>
+            {% endif %}
+        </div>
+    </section>
+  </div>
+{% endblock %}

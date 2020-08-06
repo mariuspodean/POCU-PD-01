@@ -1,0 +1,47 @@
+<div class="modal hide custom-modal" id="transactionModal">
+    <form class="well" method="post" action="{% url 'create_transaction' %}">
+        <div class="modal-header">
+            <h3>Create new transaction</h3>
+        </div>
+        <div class="modal-body">
+
+            {% csrf_token %}
+            <label for="account">Account name: </label>
+            <select required id="account" name="account">
+                <option disabled selected value> -- none -- </option>
+                {% for account in accounts %}
+                <option value="{{account.id}}">{{account.name}}</option>
+                {% endfor %}
+            </select>
+
+            <label for="transaction_type">Transaction type: </label>
+            <select required id="transaction_type" name="transaction_type">
+                <option disabled selected value> -- none -- </option>
+                <option value="Deposit">Deposit</option>
+                <option value="Withdraw">Withdraw</option>
+            </select>
+
+            <label for="transaction_subtype">Transaction subtype: </label>
+            <select required id="transaction_subtype" name="transaction_subtype">
+                <option disabled selected value> -- none -- </option>
+                {% for subtype in subtypes %}
+                <option value="{{subtype.id}}">{{subtype.name}}</option>
+                {% endfor %}
+            </select>
+
+            <label for="amount">Amount: </label>
+            <input required type='number' id="amount" name="amount" value="" min="0">
+
+            <label for="date">Date: </label>
+            <input required type='date' id="date" name="date" value="">
+
+            <label for="comment">Comment: </label>
+            <textarea required name="comment"></textarea>
+
+        </div>
+        <div class="modal-footer">
+            <input class="btn" style="background-color: #00D498;" type="submit" value="Save" />
+            <input name="cancel" class="btn" type="button"  data-dismiss="modal" value="Cancel"/>
+        </div>
+    </form>
+</div>

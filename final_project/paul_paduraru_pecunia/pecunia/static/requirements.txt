@@ -1,0 +1,73 @@
+### General description ###
+
+Building a personal finance application:
+
+
+Effective control of money flows is becoming one of our basic needs, and each of us solves the problem in his own way.
+Thus the need for a personal finance application. 
+
+A personal finance app is intedned to perform very specific tasks, quite simple, but important. The main objective is
+to help the user to manage his own budget. The main functionalities of a financial app are:
+
+- strictly control your finances: keep track of expenses and incomes
+- plan your budget and always be aware of your savings
+- track small investements and savings
+- make payments for various types of services
+
+The goal is to build a simple application that will require manual data entry. Although manual entry is more time consuming and prone to human error,
+it also offers the benefit of security, since bank cards are not linked to the application, and involves a simpler, cheaper development process.
+
+
+### High level requirements ###
+
+1. Offer users basic account functionality: register, login, logout
+2. Offer users an overview of the current economic status: total balance, total expenses, total income
+3. Offer users functionality to manage money across multiple accounts
+4. Offer users functionality to track transactions based on accounts and type
+5. User overview should track all changes to account and transactions
+6. Offer users functionality to remove transactions
+7. Offer users functionality to remove accounts
+
+
+### Requirements description ###
+
+1. Account functionality
+
+1.1 Register
+
+Description: As a user I should be able to register in the application.
+Acceptance criteria: Users should be able to register with a minimum of details (username, email, password). Once registered the users should be able to login.
+
+1.2 Login
+
+Description: As a user I should be able to login in the application with my account details.
+Acceptance criteria: Users should be able to login using their credentials. Users should be informed if the credentials are invalid.
+
+1.3 Logout: As a user I should be able to logut of the application.
+Acceptance criteria: Users should be able to logout of the application. After logout users will need to login in order to have access to the application.
+
+
+2. User overview
+
+Description: As a user I should be able to see at all times the status of my finances.
+Acceptance criteria: The application will offer the user an overview of his finances at the current moment. The overview should include details about the
+total balance, total transactions, total income and total expenses. The overview will reflect all changes to the financial status immediately.
+
+3. Account management
+
+Description: As a user I should be able to manage multiple accounts.
+Acceptance criteria: Offer user the possiblity to add multiple accounts, with details like name, balance and currency. Users should also be able to delete
+accounts if neccessary.
+
+4. Transactions
+
+Description: As a user I should be able to add transactions and track them by account or type.
+Acceptance criteria: Users should be able to add transactions only if they have at least one account present. Transactions are always linked to an account
+and include details like type, subtype, amount, currency.
+
+5. Data management
+
+Description: As a user I should be able to add and remove records and always have an up to date status.
+Acceptance criteria: Adding accounts will update the user overview. Removing account will update the user overview and will also remove all transactions
+linked to that account. Adding or removing a transactions will update the user overview and the balance of the linked account based on the type:
+deposit or withdraw.
