@@ -7,9 +7,18 @@ from .models import IngredientType, Ingredient, RecipeType, Recipe, Cost
 from .forms import AddIngredientForm, AddRecipeForm, CalculateCostForm
 
 
+def index(request):
+    context = {
+        'index_page': 'active'
+        }    
+    return render(request, 'beer_calculator/index.html', context)
+
 def ingredients(request):
     ingredients_list = Ingredient.objects.order_by('name')
-    context = {'ingredients_list': ingredients_list}
+    context = {
+        'ingredients_list': ingredients_list,
+        'ingredients_page': 'active'
+        }
     return render(request, 'beer_calculator/ingredients.html', context)
 
 def add_ingredient(request):
@@ -25,7 +34,10 @@ def add_ingredient(request):
 
 def recipes(request):
     recipes_list = Recipe.objects.order_by('name')
-    context = {'recipes_list': recipes_list}
+    context = {
+        'recipes_list': recipes_list,
+        'recipes_page': 'active'
+        }
     return render(request, 'beer_calculator/recipes.html', context)
 
 def add_recipe(request):
@@ -40,7 +52,10 @@ def add_recipe(request):
 
 def costs(request):
     costs_list = Cost.objects.order_by('recipe')
-    context = {'costs_list': costs_list}
+    context = {
+        'costs_list': costs_list,
+        'costs_page': 'active'
+        }
     return render(request, 'beer_calculator/costs.html', context)
 
 def calc_cost(x, y):

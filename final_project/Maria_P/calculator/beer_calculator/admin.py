@@ -24,7 +24,7 @@ class RecipeAdmin(admin.ModelAdmin):
     search_fields = ('name',)
 
 class CostAdmin(admin.ModelAdmin):
-    list_display = ('id', 'recipe', 'ingredient', 'quantity', 'cost')
+    list_display = ('id', 'recipe', 'ingredient', 'quantity', 'cost', 'date_time')
     search_fields = ('recipe__name', 'ingredient__name')
 
 admin.site.register(IngredientType, IngredientTypeAdmin)
