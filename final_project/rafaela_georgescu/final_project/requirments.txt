@@ -1,0 +1,59 @@
+-- Paw Patrol Web App --
+
+- application created for pet persons that allows users 
+	- to find the best pet sitters and dog walkers from their town
+	or
+	- to book dates with the fluffiest and the most convinient pets from their town
+
+Frontend
+1. Pages:
+	- HomePage 
+	- About
+	- Walkers
+	- Pets
+	- Profile
+	- Pet Details
+	- Walker Details
+2. Design:
+	- 'Paw Patrol' logo (as text) on all pages
+	- Clean design
+	- Mobile friendly
+ 
+Functionalities
+1. Pets
+	- Display pets in app with pagination
+	- Can have multiple types of pets (for now, only dogs)
+	- Search dogs by keyword, gender, size, and some boolean values (if it is vaccinated, friendly with other dogs or microchipped)
+	- Pet should have a details page on which more information is displayed (a carousel with 1 up to 3 photos, some other details regarding the pet and also details about the owner of that pet [picture, name, email, relative address etc.])
+2. Users
+	- Role based users (staff and non-staff)
+	- Should have basic account functionalities: register, login and logout
+	- Can have multiple types of non-staff users (for now, only owners and walkers)
+	- There are two types of non-staff users: owners (people who need the help to walk their pets) and walkers (professional volunteers that offer their time and services)
+	- Each type of user will receive his own register form
+	- After registering/logging-in, both types of user will be redirected to Profile Page, where
+		- for walkers will be displayed a list with all their pet walking bookings (and with a link to each pet's details page)
+		- for owners will be displayed a list with all their pets (with a link to each pet's details page) and also will be offered the possibility to add a new pet in the system
+	- Display walkers in app with pagination
+	- Walker should have a details page on which more information will be displayed + a list with all the reviews he received; also, both anonymous users or logged-in users will have the possibility to add a review to any walker
+3. Appointments
+	- Appointments will be created from Pet details Page
+	- Can only be created by walkers (owners and anonymous users will not see the functionality on pet details page)
+	- Will be displayed on each walker's profile page
+4. Reviews
+	- Reviews will be created from Walker details Page
+	- Can be created by any type of user (if the user is logged in, his name will be concatenated with the review text, and if it is an anonymour user, a 'anonymous' string will be concatenated)
+	- Will be displayed on each walker's details page
+
+Other mini functionalities:
+- dynamic title
+- login on registration from modals (so it will be possible from anywhere on site)
+- create appointments and create review will also be made from modals
+- after registering/logging-in, the 'register' button is transformed in 'profile' button, and 'login' button in 'logout', and are transformed back when logging out
+- expandable forms (on register modal and 'add pet' from owners profile page)
+
+Possible future functionalities:
+- send email when an appointment was created (to both users, pet's owner and walker)
+- offer the possibility to decline an appointment
+- google maps integrated to show the closest pets from walker
+- expand serrvices (to pet sitting, veterinary services etc.)
