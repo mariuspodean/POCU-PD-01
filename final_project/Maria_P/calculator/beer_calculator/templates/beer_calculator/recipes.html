@@ -1,0 +1,39 @@
+{% extends 'beer_calculator/base.html' %}
+
+{% load static %}
+
+{% block title %} Recipes {% endblock%}
+
+{% block content %}
+
+<h2>Recipes</h2>
+
+<a class="btn btn-outline-dark open-form" href="{% url 'add_recipe' %}" role="button">Add Recipe</a>
+
+{% if recipes_list %}
+<table class="table table-striped table-bordered table-hover">
+    <caption>List of recipes</caption>
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Type</th>
+            <th scope="col">Ingredients</th>
+            <th scope="col">Update Date & Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for recipe in recipes_list %}
+        <tr>
+            <td>{{ recipe.name }}</td>
+            <td>{{ recipe.recipe_type }}</td>
+            <td>{{ recipe.ingredients.all|join:", " }}</td>
+            <td>{{ recipe.update_date_time }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p class="no-entries-available"> No recipes are available</p>
+{% endif %}
+
+{% endblock %}

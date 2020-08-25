@@ -1,0 +1,31 @@
+{% load static %}
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{% url 'index' %}">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item {{ costs_page }}">
+                <a class="nav-link" href="{% url 'costs' %}">Costs</a>
+            </li>
+            <li class="nav-item {{ ingredients_page }}">
+                <a class="nav-link" href="{% url 'ingredients' %}">Ingredients</a>
+            </li>
+            <li class="nav-item {{ recipes_page }}">
+                <a class="nav-link" href="{% url 'recipes' %}">Recipes</a>
+            </li>
+
+        </ul>
+        <span>
+            <a href="https://www.facebook.com" class="fab fa-facebook" target="_blank"></a>
+            <a href="https://www.instagram.com" class="fab fa-instagram" target="_blank"></a>
+            <a href="https://twitter.com/" class="fab fa-twitter" target="_blank"></a>
+            <a href="https://linkedin.com/in/maria-pascanu" class="fab fa-linkedin" target="_blank"></a>
+            <a href="https://pinterest.com/" class="fab fa-pinterest" target="_blank"></a>
+        </span>
+    </div>
+</nav>

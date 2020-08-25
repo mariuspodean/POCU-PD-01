@@ -1,0 +1,42 @@
+{% extends 'beer_calculator/base.html' %}
+
+{% load static %}
+
+{% block title %} Costs {% endblock%}
+
+{% block content %}
+
+<h2>Costs</h2>
+
+<a class="btn btn-outline-dark open-form" href="{% url 'calculate_cost' %}" role="button">Calculate Cost</a>
+
+{% if costs_list %}
+<table class="table table-striped table-bordered table-hover">
+    <caption>List of costs</caption>
+    <thead>
+        <tr>
+            <th scope="col">Recipe</th>
+            <th scope="col">Ingredient</th>
+            <th scope="col">Quantity (g)</th>
+            <th scope="col">Cost (RON)</th>
+            <th scope="col">Date & Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cost in costs_list %}
+        <tr>
+            <td>{{ cost.recipe }}</td>
+            <td>{{ cost.ingredient }}</td>
+            <td>{{ cost.quantity }}</td>
+            <td>{{ cost.cost }}</td>
+            <td>{{ cost.date_time }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% else %}
+<p class="no-entries-available">No costs are available</p>
+{% endif %}
+
+{% endblock %}
