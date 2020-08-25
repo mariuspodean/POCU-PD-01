@@ -1,0 +1,52 @@
+{% extends "pharm_tree/base.html" %}
+{% load static %}
+{% block content %}
+<main role ='main' class="pat_table">
+  <br></br>
+  <form action="{% url 'adddrugs_page' %}">
+    <input type="submit" value="Add a drug" />
+  </form>
+        <br></br>
+        <table class="table table-bordered table-grey">
+                <thead>
+                  <tr>
+                    <th scope="col">Number</th>
+                    <th scope="col">Name of the drug</th>
+                    <th scope="col">Expiration date</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Edit</th>
+                  </tr>
+                </thead>
+                {% for drg in list_drugs %}
+                <tbody>
+                  <tr>
+                    <td scope="row">{{drg.id}}</td>
+                    <td>{{drg.name_of_drug}}</td>
+                    <td>{{drg.data_of_expiration}}</td>
+                    <td>{{drg.stock}}</td>
+                    <td><a href="{% url 'editdrugs_page' drg.id %}"><button type="button" class=" btn btn-default">Edit</button></a> </td>
+                  </tr>
+                </tbody>
+                {% endfor %}
+              </table>
+              <div class="pagination">
+                <span class="step-links">
+                    {% if list_drugs.has_previous %}
+                        <a href="?page=1">&laquo; first</a>
+                        <a href="?page={{ list_drugs.previous_page_number }}">previous</a>
+                    {% endif %}
+            
+                    <span class="current">
+                        Page {{ list_drugs.number }} of {{ list_drugs.paginator.num_pages }}.
+                    </span>
+            
+                    {% if list_drugs.has_next %}
+                        <a href="?page={{ list_drugs.next_page_number }}">next</a>
+                        <a href="?page={{ list_drugs.paginator.num_pages }}">last &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+</main>
+
+{% endblock content %}
+ 
