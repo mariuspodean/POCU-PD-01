@@ -1,0 +1,66 @@
+<h1>Create Item</h1>
+{% extends 'recipes/base.html'%}
+
+{% block content %}
+<html>
+<head>
+<title>Create Recipe </title>
+</head>
+<style>
+
+</style>
+<body>
+    <section id="recipe">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 mx-auto">
+              <div class="card">
+                <div class="card-header bg-primary text-white">
+                  <h4>
+                    <i class="fas fa-sign-in-alt"></i> Create recipes</h4>
+                </div>
+                <div class="card-body">
+                    <form action="{% url 'create_recipe' %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                    <div class="form-group">
+                      <label for="name">Name</label>
+                      <input type="text" name="name" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <select name="select-items" required="" id="id_items" multiple="">
+                            {% for item in items %}
+                            <option name = "items" value="{{ item.title }}">{{ item.title }}</option>
+                          {% endfor %}
+                    </select>
+
+                    <!-- <div class="form-group">
+                        <label for="item_8">Article 8</label>
+                        <select name="item_8" id="item_8" class="form-control">
+                          <option value=""></option>
+                        {% for item in items %}
+                          <option value="{{ item.title }}">{{ item.title }}</option>
+                        {% endfor %}
+                        </select> 
+                    </div> -->
+
+                    <div class="form-group">
+                        <label for="img">Picture</label>
+                        <input type="file" name="img" class="form-control" required>
+                    </div>
+                    
+                    <input type="submit" value="Create" class="btn btn-primary btn-block">
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </body>
+
+</html>
+{% endblock %}
+
+<label class="required" for="id_distributor">Distributor:</label>

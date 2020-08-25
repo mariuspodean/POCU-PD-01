@@ -1,0 +1,32 @@
+{% extends 'recipes/base.html'%}
+ 
+{% block content %}
+ 
+<section id="recipies" class="py-5">
+    <div class="container">
+      <h3 class="text-center mb-3">Recipies</h3>
+      <div class="row">
+        <!-- Recipe -->
+        {% for recipe in recipes %}
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card listing-preview">
+            <img class="card-img-top" src="{{ recipe.image.url }}" alt="">
+            <div class="card-body">
+              <div class="text-center">
+                <h4 class="text-primary">{{ recipe.name }}</h4>
+              </div>
+              <hr>
+               <form action="{% url 'update_items' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                    <input type="hidden" value="{{ recipe.id }}" name="recipe_id"></input>
+                    <button type="submit" class="btn btn-primary btn-block">Prepare</button>
+            </form>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+ 
+{% endblock %}

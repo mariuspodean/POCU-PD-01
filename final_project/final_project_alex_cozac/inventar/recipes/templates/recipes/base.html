@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Business Casual - Start Bootstrap Theme</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+  
+
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/business-casual.min.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+    <div class="container">
+       <a class="navbar-brand"  href="{% url 'home' %} ">Homepage</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Ingredients
+              </a>
+              <div class="dropdown-menu btn-primary" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item bg-transparent" href="{% url 'create_item' %}">Create ingredient</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'all_items' %}">View ingredients</a>
+              </div>
+            </li>
+
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Recipes
+              </a>
+              <div class="dropdown-menu btn-primary" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'create_recipe' %}">Create recipe</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'all_recipes' %}">View recipes</a>
+              </div>
+            </li>
+          
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Distributors
+              </a>
+              <div class="dropdown-menu btn-primary" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'create_distributor' %}">Create distributor</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'all_distributors' %}">View distributors</a>
+              </div>
+            </li>  
+
+        </ul>
+      </div>
+    </nav>
+
+  
+
+  
+
+  {% block content %}{% endblock %}
+
+  <footer class="footer text-faded text-center py-5">
+    <div class="container">
+      <p class="m-0 small">Coffe Joy &copy;</p>
+    </div>
+  </footer>
+ 
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+
+</html>
