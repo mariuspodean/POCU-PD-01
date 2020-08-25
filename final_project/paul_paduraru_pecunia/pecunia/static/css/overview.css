@@ -1,0 +1,81 @@
+.card-list {
+
+	width: 100%;
+}
+
+.card-list::before{
+    content: " ";
+	display: table;
+}
+
+.card-list::after{
+    content: " ";
+    display: table;
+    clear: both;
+}
+
+.card {
+	color: white;
+	padding: 10px;
+    position: relative;
+    background-color: black;
+    border-radius: 0%;
+}
+
+    
+.zmdi {
+    color: white;
+    font-size: 28px;
+    opacity: 0.3;
+    position: absolute;
+    right: 13px;
+    top: 13px;
+}
+
+.stat {
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 12px;
+    margin-top: 25px;
+    padding: 10px 10px 0;
+    text-transform: uppercase;
+}
+
+.title {
+    display: inline-block;
+    font-size: 12px;
+    padding: 10px 10px 0;
+    text-transform: uppercase;
+}
+
+.value {
+    font-size: 28px;
+    padding: 0 10px;
+}
+
+.custom-modal{
+    color: white;
+    height: fit-content;
+    width: 40%;
+    background-color: #303030;
+    border: 1px solid white;
+    position: fixed;
+    left: 50%;
+    top: 51%;
+    transform: translateY(-50%) translateX(-50%);
+    -webkit-box-shadow: 0 0 10px #fff;
+        box-shadow: 0 0 4px #fff;
+}
+
+.modal-backdrop {
+    background-color: transparent;
+}
+
+.modal-body{
+    display: grid;
+}
+
+.btn-delete{
+    background-color: transparent;
+    border: 1px transparent;
+    cursor: pointer;
+}

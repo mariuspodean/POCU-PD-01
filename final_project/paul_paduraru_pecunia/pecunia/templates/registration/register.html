@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block register %}
+
+<div class="col-lg-4 col-md-4 col-12 account-section" style='margin: auto;'>  
+    <section class="">
+        <div class="bg-black bg-register">
+            <h3>Create new account</h3>
+            <br/>
+            <form method="POST">
+                {% csrf_token %}
+                {{form.as_table}}
+                <div class="button-wrapper">
+                    <button>Register</button>
+                </div>               
+            </form>
+        </div>
+    </section>
+</div>
+{% endblock %}

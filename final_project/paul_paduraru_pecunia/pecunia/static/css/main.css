@@ -1,0 +1,665 @@
+body {
+  font-family: 'Share Tech Mono', monospace;
+  background: #303030;
+}
+
+.container {
+  min-width: 100%;
+}
+
+#second,
+#third,
+.bg-black {
+  background: #090B0C;
+  margin-bottom: 15px;
+}
+
+.bg-register {
+
+  padding: 1rem;
+  color: #fff;
+}
+
+
+.account-section {
+
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+
+}
+
+
+.welcome-title {
+  text-align: center;
+  color: white;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+.bg-register form {
+  display: grid;
+  margin: auto;
+  width: 70%;
+}
+
+
+.button-wrapper {
+
+  text-align: center;
+  margin-top: 2rem;
+
+}
+
+.monthly-budget-heading h3 {
+  font-size: 48px;
+  line-height: 48px;
+  color: #fff;
+  margin: 0;
+  padding: 18px 0;
+}
+
+.budget-head {
+  border-bottom: 1px solid #40454A;
+  padding: 12px 16px;
+}
+
+.budget-head>div {
+  float: left;
+}
+
+.budget-head>div.budget-type-heading {
+  width: 40%;
+}
+
+.budget-head>div.budget-type-filter {
+  float: right;
+  display: flex;
+  align-items: center;
+  padding: 5px 0;
+}
+
+.budget-head>div.budget-type-filter>div {
+  float: left;
+  cursor: pointer;
+}
+
+.budget-type-heading {
+  line-height: 32px;
+  font-size: 24px;
+  text-transform: capitalize;
+  color: #FFFFFF;
+}
+
+.budget-head>div.budget-type-filter>div {
+  color: #00D498;
+  font-size: 10px;
+  line-height: 12px;
+  text-transform: uppercase;
+  padding-left: 15px;
+}
+
+.budget-head>div.budget-type-filter>div.select-time select {
+  background: transparent;
+  color: #fff;
+  padding: 2px;
+  border: 1px solid #00D498;
+  box-sizing: border-box;
+  border-radius: 2px;
+  min-width: 60px;
+  outline: 0;
+}
+
+.type-of-revenu-head {
+  padding: 8px 15px 15px;
+}
+
+.type-of-revenu-head>div {
+  float: left;
+  width: 50%;
+}
+
+.type-of-revenu-head>div.custom-date-time {
+  float: right;
+  line-height: 12px;
+  font-size: 9px;
+  text-align: right;
+  color: #ADADAD;
+  padding: 10px 0px;
+}
+
+.type-of-revenu-head .custom-heading {
+  line-height: 32px;
+  font-size: 18px;
+  text-transform: capitalize;
+  color: #fff;
+}
+
+
+/* TABLE STYLES ---- START */
+
+.table table thead {
+  border: 1px solid #FFFFFF;
+}
+
+.table table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.table {
+  padding: 0 15px;
+}
+
+.table table thead td {
+  line-height: 14px;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.table table thead td .order {
+  position: relative;
+  top: 1px;
+  margin-left: 2px;
+}
+
+.table table thead td .order span {
+  position: absolute;
+}
+
+.table table thead td .order span.up-arrow {
+  top: -5px;
+}
+
+.table td input,
+.table td select {
+  width: 100%;
+  border: 1px solid transparent;
+  background: #090b0c;
+  line-height: normal;
+  font-size: 13px;
+  color: #FFFFFF;
+  padding: 4px;
+  outline: 0;
+}
+
+.table tbody td {
+  padding: 5px;
+}
+
+.table tbody td .option>div {
+  float: left;
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+.table tbody td .option {
+  float: right;
+}
+
+.table tbody tr {
+  border: 1px solid #40454A;
+  border-top: 0;
+  border-color: #40454A;
+}
+
+.table table tbody tr:first-child td {
+  border-top-color: #fff;
+}
+
+.table tbody td select {
+  text-transform: uppercase;
+}
+
+.table tbody tr.total td {
+  line-height: 14px;
+  font-size: 15px;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 10px;
+}
+
+.add-more {
+  line-height: 14px;
+  font-size: 12px;
+  margin-left: 1rem;
+  text-transform: uppercase;
+  color: #00D498;
+  padding-top: 8px;
+  padding-bottom: 15px;
+
+}
+
+.add-more a {
+  text-decoration: none;
+  color: #00D498;
+}
+
+.add-more a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.add-more .icon {
+  position: relative;
+  top: -2px;
+}
+
+
+.cm-4-col-price ul li .money {
+  color: #fff;
+}
+
+.total-income {
+  position: relative;
+  padding-bottom: 12px;
+  margin-top: -12px;
+}
+
+.cm-4-col-price ul li .text {
+  line-height: 14px;
+  font-size: 10px;
+  text-transform: uppercase;
+  display: inline-block;
+  color: #fff;
+}
+
+.total-income .text {
+  display: inline-block;
+  line-height: 14px;
+  font-size: 10px;
+  text-transform: uppercase;
+  position: relative;
+  top: -20px;
+}
+
+.cm-4-col-price ul {
+  padding-left: 0;
+  list-style: none;
+  display: block;
+  position: relative;
+  margin: 0;
+}
+
+.cm-4-col-price ul li {
+  float: left;
+  width: 25%;
+  padding-right: 5px;
+}
+
+.cm-4-col-price ul li .money {
+  line-height: 28px;
+  font-size: 24px;
+  display: block;
+}
+
+.cm-4-col-price ul li .text br {
+  display: block;
+  line-height: 1px;
+}
+
+.cm-4-col-price ul li:last-child {
+  padding-right: 0;
+}
+
+.table tbody tr td .round {
+  width: 4px;
+  height: 4px;
+  border-radius: 100%;
+  display: inline-block;
+  background: #a2a2a2;
+  float: left;
+  position: absolute;
+  top: 18px;
+  left: 10px;
+}
+
+.table tbody tr td .round.pink {
+  background: #FF3BA5;
+}
+
+.table tbody tr td .round.blue {
+  background: #1AD3FF;
+}
+
+.table tbody tr td {
+  position: relative;
+}
+
+.table tbody tr td .round+input {
+  margin: 0;
+  padding-left: 15px !important;
+}
+
+.table tbody tr:hover .cancel-save {
+  display: block;
+}
+
+.table table thead td:first-child {
+  width: 35%;
+}
+
+.table td select {
+  width: 80px;
+}
+
+.table tbody td select.edit-read {
+  text-transform: none;
+  width: 75px;
+}
+
+.cm-delete svg {
+  width: 13px;
+  height: 13px;
+}
+
+.cm-edit svg {
+  width: 14px;
+  height: 20px;
+  display: none;
+}
+
+/* TABLE STYLES ---- END */
+
+.input-data-toggle-form {
+  background: #090b0c;
+  left: 15px;
+  z-index: 1;
+  padding: 0px 15px;
+}
+
+.input-data-toggle-form {
+  line-height: normal;
+  font-size: 13px;
+  color: #FFFFFF;
+}
+
+.input-data-toggle-form .button-toggle-heading {
+  text-transform: uppercase;
+  float: left;
+}
+
+.input-data-toggle-form .button-toggle {
+  float: right;
+}
+
+.input-data-toggle-form .toggle-input-data input {
+  display: block;
+  width: 100%;
+  border: 1px solid #FFFFFF;
+  box-sizing: border-box;
+  border-radius: 2px;
+  background: #090b0c;
+  margin-bottom: 12px;
+  outline: 0;
+  padding: 3px 5px;
+  color: #fff;
+  line-height: 20px;
+  font-size: 14px;
+}
+
+.toggle-save-cancel-button {
+  padding: 12px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.toggle-save-cancel-button>button {
+  line-height: normal;
+  font-size: 22px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  padding: 12px 15px;
+  display: block;
+  width: 100%;
+  margin-right: 20px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  outline: 0;
+  cursor: pointer;
+}
+
+.toggle-save-cancel-button>button:last-child {
+  margin: 0;
+}
+
+.toggle-save-cancel-button>button.btn-save-toggle {
+  border-color: #fff;
+  background: #090b0c;
+}
+
+.toggle-save-cancel-button>button.btn-save-toggle.btn-c {
+  background: #00D498;
+  border-color: #00D498;
+  color: #090B0C;
+}
+
+.input-data-toggle-form .toggle-heading {
+  padding: 12px 0;
+}
+
+
+.input-data-toggle-form .button-toggle .toggle-switch {
+  position: relative;
+  width: 20px;
+  background: #40454A;
+  border-radius: 9px;
+  height: 8px;
+  cursor: pointer;
+}
+
+.input-data-toggle-form .button-toggle .toggle-switch input[type="checkbox"] {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.input-data-toggle-form .button-toggle .toggle-switch label {
+  background: #090B0C;
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  border: 1px solid #fff;
+  border-radius: 100%;
+  top: -1px;
+}
+
+.input-data-toggle-form .button-toggle {
+  margin: 5px 0;
+}
+
+/* RESPONSIVE STYLES ---- START */
+
+@media(min-width:768px) {
+  .row-reverse {
+    flex-direction: row-reverse;
+  }
+
+  .custom-mobile-visible {
+    display: none;
+  }
+
+  .table tbody tr:hover input,
+  .table tbody tr:hover select {
+    border: 1px solid #FFFFFF;
+    border-radius: 2px;
+  }
+}
+
+@media(max-width:767px) {
+
+  #main-area .table td:nth-child(4),
+  #main-area .table td:nth-child(3) {
+    display: none;
+  }
+
+  #first {
+    background: #090b0c;
+    text-align: center;
+    border-bottom: 1px solid #40454A;
+  }
+
+  .monthly-budget-heading h3 {
+    padding: 25px;
+  }
+
+  .container {
+    min-width: 100%;
+    padding: 0;
+  }
+
+  .container .row {
+    margin: 0;
+  }
+
+  .container [class*=col-] {
+    padding: 0;
+  }
+
+  #sidebar .custom-sidebar-heading {
+    border-bottom: 0;
+    text-align: center;
+  }
+
+  #sidebar .custom-sidebar-heading .common-float {
+    float: none;
+  }
+
+  #sidebar .custom-sidebar-heading .menu-option {
+    display: none;
+  }
+
+  #sidebar .cm-4-col-price ul li .text br {
+    display: none;
+  }
+
+  #sidebar .total-income .text {
+    top: -2px;
+    font-size: 16px;
+    line-height: 1.2;
+    margin-left: 5px;
+  }
+
+  #sidebar .total-income .money {
+    font-size: 48px;
+    line-height: 55px;
+  }
+
+  #sidebar .cm-4-col-price ul li {
+    width: 50%;
+    padding-right: 0;
+  }
+
+  #second,
+  #third,
+  .bg-black,
+  .table {
+    margin-bottom: 0;
+  }
+
+  .custom-sidebar-heading {
+    margin-bottom: 0;
+  }
+
+  .cm-edit svg {
+    display: block;
+  }
+
+  .cm-delete svg {
+    width: 14px;
+    height: 20px;
+  }
+
+  .cm-edit svg {
+    width: 14px;
+    height: 14px;
+    position: relative;
+    top: 6px;
+  }
+
+  .cm-more-option {
+
+    width: 32px;
+
+  }
+
+  .table tbody tr td .option .cancel-save {
+    display: none;
+  }
+
+  .table tbody tr td .custom-mobile-visible {
+    line-height: 14px;
+    font-size: 10px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+    padding: 0 5px;
+    position: relative;
+    top: -9px;
+  }
+
+  .table tbody tr td {
+    position: relative;
+    vertical-align: middle;
+  }
+
+  .table td input,
+  .table td select,
+  .table tbody tr.total td {
+    font-size: 13px;
+  }
+
+  .table table thead td:first-child {
+    width: 40%;
+  }
+
+  .table tbody td select.edit-read {
+    width: 85px;
+  }
+
+  .budget-head>div.budget-type-filter>div.expand-collapse {
+    display: none;
+  }
+
+  .budget-head>div.budget-type-heading {
+    width: 100%;
+    line-height: 41px;
+    font-size: 36px;
+    text-align: center;
+    color: #FFFFFF;
+  }
+
+  .budget-head>div.budget-type-filter {
+    float: none;
+    display: block;
+    padding: 25px 0 0;
+  }
+
+  .budget-head>div.budget-type-filter>div.more-option {
+    float: right;
+  }
+
+  .budget-head>div.budget-type-filter>div.show-hide {
+    margin-top: 6px;
+    padding-left: 0;
+  }
+
+  .budget-head>div.budget-type-heading {
+    float: none;
+  }
+
+  .table td input,
+  .table td select {
+    pointer-events: none;
+  }
+}
